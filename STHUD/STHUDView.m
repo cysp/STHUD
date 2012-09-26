@@ -29,9 +29,9 @@ static UIImage *gSTHUDViewFailureImage = nil;
 + (void)initialize {
 	if (self == [STHUDView class]) {
 		NSData * const STHUDViewSuccessImageData = [[NSData alloc] initWithBytesNoCopy:(void *)STHUDViewSuccessImageBytes length:STHUDViewSuccessImageSize freeWhenDone:NO];
-		gSTHUDViewSuccessImage = [[UIImage alloc] initWithData:STHUDViewSuccessImageData];
+		gSTHUDViewSuccessImage = [[UIImage alloc] initWithData:STHUDViewSuccessImageData scale:2.f];
 		NSData * const STHUDViewFailureImageData = [[NSData alloc] initWithBytesNoCopy:(void *)STHUDViewFailureImageBytes length:STHUDViewFailureImageSize freeWhenDone:NO];
-		gSTHUDViewFailureImage = [[UIImage alloc] initWithData:STHUDViewFailureImageData];
+		gSTHUDViewFailureImage = [[UIImage alloc] initWithData:STHUDViewFailureImageData scale:2.f];
 	}
 }
 
