@@ -16,7 +16,7 @@ static const NSTimeInterval kSTHUDViewAnimationDuration = .2f;
 
 static CGFloat UIInterfaceOrientationTransformForRotation(UIInterfaceOrientation);
 static NSTimeInterval UIInterfaceOrientationAnimationDuration(UIApplication *, UIInterfaceOrientation from, UIInterfaceOrientation to);
-static CGRect CGRectBoundsForOrientation(UIScreen *, UIInterfaceOrientation);
+static CGRect CGRectScreenBoundsForOrientation(UIScreen *, UIInterfaceOrientation);
 
 
 @interface STHUDWindow ()
@@ -180,7 +180,7 @@ static CGRect CGRectBoundsForOrientation(UIScreen *, UIInterfaceOrientation);
 
 		CGFloat const rotation = UIInterfaceOrientationTransformForRotation(interfaceOrientation);
 		CGAffineTransform const transform = CGAffineTransformMakeRotation(rotation);
-		CGRect const bounds = CGRectBoundsForOrientation([UIScreen mainScreen], interfaceOrientation);
+		CGRect const bounds = CGRectScreenBoundsForOrientation([UIScreen mainScreen], interfaceOrientation);
 
 		void(^animations)(void) = ^{
 			self.transform = transform;
@@ -260,7 +260,7 @@ static NSTimeInterval UIInterfaceOrientationAnimationDuration(UIApplication *app
 	return baseDuration;
 }
 
-static CGRect CGRectBoundsForOrientation(UIScreen *screen, UIInterfaceOrientation interfaceOrientation) {
+static CGRect CGRectScreenBoundsForOrientation(UIScreen *screen, UIInterfaceOrientation interfaceOrientation) {
 	CGRect const bounds = [screen bounds];
 	CGSize const size = bounds.size;
 
