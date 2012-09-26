@@ -21,4 +21,6 @@ NS_ENUM(NSUInteger, STHUDState) {
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,assign,getter=isModal) BOOL modal;
 
+- (void)keepActiveForDuration:(NSTimeInterval)duration;
+
 @end

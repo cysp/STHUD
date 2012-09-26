@@ -14,6 +14,7 @@
 @private
 	NSString *_title;
 	BOOL _modal;
+	NSCountedSet *_selfRetains;
 }
 
 - (id)init {
@@ -21,6 +22,7 @@
 
 	if ((self = [super init])) {
 		_state = STHUDStateIndeterminate;
+		_selfRetains = [[NSCountedSet alloc] init];
 		[[STHUDWindow sharedWindow] addHUD:self];
 	}
 	return self;
@@ -66,6 +68,18 @@
 		_modal = modal;
 		[self didChangeValueForKey:@"modal"];
 	}
+}
+
+
+- (void)keepActiveForDuration:(NSTimeInterval)duration {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+
+	[_selfRetains addObject:self];
+
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * (double)NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^{
+		[_selfRetains removeObject:self];
+	});
 }
 
 @end

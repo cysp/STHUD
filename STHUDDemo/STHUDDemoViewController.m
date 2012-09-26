@@ -50,6 +50,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		hud.state = STHUDStateSuccessful;
 		hud.title = @"Success";
+		[hud keepActiveForDuration:3];
     });
 }
 
