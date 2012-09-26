@@ -28,8 +28,34 @@
 	[[STHUDWindow sharedWindow] removeHUD:self];
 }
 
++ (BOOL)automaticallyNotifiesObserversOfState { return NO; }
 @synthesize state = _state;
+- (void)setState:(enum STHUDState)state {
+	if (state != _state) {
+		[self willChangeValueForKey:@"state"];
+		_state = state;
+		[self didChangeValueForKey:@"state"];
+	}
+}
+
++ (BOOL)automaticallyNotifiesObserversOfTitle { return NO; }
 @synthesize title = _title;
+- (void)setTitle:(NSString *)title {
+	if (![_title isEqualToString:title]) {
+		[self willChangeValueForKey:@"title"];
+		_title = [title copy];
+		[self didChangeValueForKey:@"title"];
+	}
+}
+
++ (BOOL)automaticallyNotifiesObserversOfModal { return NO; }
 @synthesize modal = _modal;
+- (void)setModal:(BOOL)modal {
+	if (_modal != modal) {
+		[self willChangeValueForKey:@"modal"];
+		_modal = modal;
+		[self didChangeValueForKey:@"modal"];
+	}
+}
 
 @end
