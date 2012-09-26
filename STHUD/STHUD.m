@@ -17,6 +17,8 @@
 }
 
 - (id)init {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+
 	if ((self = [super init])) {
 		_state = STHUDStateIndeterminate;
 		[[STHUDWindow sharedWindow] addHUD:self];
@@ -25,12 +27,16 @@
 }
 
 - (void)dealloc {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+
 	[[STHUDWindow sharedWindow] removeHUD:self];
 }
 
 + (BOOL)automaticallyNotifiesObserversOfState { return NO; }
 @synthesize state = _state;
 - (void)setState:(enum STHUDState)state {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+
 	if (state != _state) {
 		[self willChangeValueForKey:@"state"];
 		_state = state;
@@ -41,6 +47,8 @@
 + (BOOL)automaticallyNotifiesObserversOfTitle { return NO; }
 @synthesize title = _title;
 - (void)setTitle:(NSString *)title {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+
 	if (![_title isEqualToString:title]) {
 		[self willChangeValueForKey:@"title"];
 		_title = [title copy];
@@ -51,6 +59,8 @@
 + (BOOL)automaticallyNotifiesObserversOfModal { return NO; }
 @synthesize modal = _modal;
 - (void)setModal:(BOOL)modal {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+
 	if (_modal != modal) {
 		[self willChangeValueForKey:@"modal"];
 		_modal = modal;
