@@ -19,13 +19,11 @@ CGPoint STPointIntegral(CGPoint point) {
 }
 
 
-enum {
-	STRectAlignOptionsMaskX = 0x0f,
-	STRectAlignOptionsMaskY = 0xf0,
-};
+static NSUInteger const STRectAlignOptionsMaskX = 0x0f;
+static NSUInteger const STRectAlignOptionsMaskY = 0xf0;
 
 
-CGRect STRectAlign(CGRect outer, CGRect rect, STRectAlignOptions options) {
+CGRect STRectAlign(CGRect outer, CGRect rect, enum STRectAlignOptions options) {
 	switch (options & STRectAlignOptionsMaskX) {
 		case STRectAlignXLeft:
 			rect.origin.x = outer.origin.x;

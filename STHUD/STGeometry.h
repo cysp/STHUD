@@ -13,10 +13,10 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 
-CGPoint STPointIntegral(CGPoint point);
+extern CGPoint STPointIntegral(CGPoint point);
 
 
-enum {
+NS_ENUM(NSUInteger, STRectAlignOptions) {
     STRectAlignXLeft   = 0x01,
     STRectAlignXCenter = 0x02,
     STRectAlignXRight  = 0x03,
@@ -24,10 +24,9 @@ enum {
     STRectAlignYCenter = 0x20,
     STRectAlignYBottom = 0x30,
 };
-typedef unsigned int STRectAlignOptions;
 
-CGRect STRectAlign(CGRect outer, CGRect rect, STRectAlignOptions options);
-CGRect STRectCenter(CGRect outer, CGRect rect);
+extern CGRect STRectAlign(CGRect outer, CGRect rect, enum STRectAlignOptions options);
+extern CGRect STRectCenter(CGRect outer, CGRect rect);
 
 
-CGPathRef STRoundedRectPathCreate(CGRect rect, CGFloat cornerRadius);
+extern CGPathRef STRoundedRectPathCreate(CGRect rect, CGFloat cornerRadius);
