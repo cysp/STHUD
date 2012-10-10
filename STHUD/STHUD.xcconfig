@@ -1,0 +1,20 @@
+//
+//  STHUD.xcconfig
+//  STHUD
+//
+//  Created by Scott Talbot on 10/10/12.
+//  Copyright (c) 2012 Scott Talbot. All rights reserved.
+//
+
+SDKROOT = iphoneos
+
+PRODUCT_NAME = $(TARGET_NAME)
+DYLIB_CURRENT_VERSION = 1
+
+OTHER_LDFLAGS = -ObjC
+
+DSTROOT = /tmp/STHUD.dst
+SKIP_INSTALL = YES
+
+CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES
+CLANG_WARN_OBJC_RECEIVER_WEAK = YES

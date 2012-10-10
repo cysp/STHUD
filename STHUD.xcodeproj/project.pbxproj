@@ -48,6 +48,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C2FDE961625873600BDF161 /* STHUD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = STHUD.xcconfig; sourceTree = "<group>"; };
+		2C2FDE971625876200BDF161 /* STHUD-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STHUD-Debug.xcconfig"; sourceTree = "<group>"; };
+		2C2FDE981625877D00BDF161 /* STHUD-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STHUD-Release.xcconfig"; sourceTree = "<group>"; };
 		2C8379471611C21F00BE166B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C8379751611C7C900BE166B /* libSTHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8379841611C89700BE166B /* STHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDWindow.h; sourceTree = "<group>"; };
@@ -159,6 +162,9 @@
 				2C83798E1611E9F300BE166B /* STHUDViewImageData.m */,
 				2CDE1D9B15D7B877002AA53C /* STGeometry.h */,
 				2CDE1D9915D7B86D002AA53C /* STGeometry.m */,
+				2C2FDE961625873600BDF161 /* STHUD.xcconfig */,
+				2C2FDE971625876200BDF161 /* STHUD-Debug.xcconfig */,
+				2C2FDE981625877D00BDF161 /* STHUD-Release.xcconfig */,
 			);
 			path = STHUD;
 			sourceTree = "<group>";
@@ -276,25 +282,15 @@
 /* Begin XCBuildConfiguration section */
 		2C83797F1611C7C900BE166B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C2FDE971625876200BDF161 /* STHUD-Debug.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
-				CLANG_WARN_OBJC_RECEIVER_WEAK = YES;
-				DSTROOT = /tmp/STHUD.dst;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
 		2C8379801611C7C900BE166B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C2FDE981625877D00BDF161 /* STHUD-Release.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
-				CLANG_WARN_OBJC_RECEIVER_WEAK = YES;
-				DSTROOT = /tmp/STHUD.dst;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};

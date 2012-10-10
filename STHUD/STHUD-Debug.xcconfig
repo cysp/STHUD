@@ -1,0 +1,9 @@
+//
+//  STHUD-Debug.xcconfig
+//  STHUD
+//
+//  Created by Scott Talbot on 10/10/12.
+//  Copyright (c) 2012 Scott Talbot. All rights reserved.
+//
+
+#include "STHUD.xcconfig"
