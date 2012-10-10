@@ -39,6 +39,7 @@ static UIImage *gSTHUDViewFailureImage = nil;
 	}
 }
 
+
 - (id)initWithFrame:(CGRect)frame {
 	return [self initWithHUD:nil];
 }
@@ -49,89 +50,90 @@ static UIImage *gSTHUDViewFailureImage = nil;
 		return nil;
 	}
 
-    if ((self = [super initWithFrame:CGRectMake(0, 0, 160, 120)])) {
-        self.backgroundColor = [UIColor clearColor];
-        self.opaque = NO;
+	if ((self = [super initWithFrame:CGRectMake(0, 0, 160, 120)])) {
+		self.backgroundColor = [UIColor clearColor];
+		self.opaque = NO;
 
 		_hud = hud;
 
-        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        _activityIndicatorView.frame = STRectCenter(CGRectMake(0, 20, 160, 60), _activityIndicatorView.frame);
-        _activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
-        [self addSubview:_activityIndicatorView];
+		_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		_activityIndicatorView.frame = STRectCenter(CGRectMake(0, 20, 160, 60), _activityIndicatorView.frame);
+		_activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
+		[self addSubview:_activityIndicatorView];
 
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 75, 160, 40)];
-        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        _titleLabel.font = [UIFont boldSystemFontOfSize:20];
-        _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
-        _titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:.75];
-        _titleLabel.shadowOffset = CGSizeMake(0, .5);
-        _titleLabel.textAlignment = UITextAlignmentCenter;
-        _titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
-        [self addSubview:_titleLabel];
+		_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 75, 160, 40)];
+		_titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+		_titleLabel.font = [UIFont boldSystemFontOfSize:20];
+		_titleLabel.backgroundColor = [UIColor clearColor];
+		_titleLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
+		_titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:.75];
+		_titleLabel.shadowOffset = CGSizeMake(0, .5);
+		_titleLabel.textAlignment = UITextAlignmentCenter;
+		_titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+		[self addSubview:_titleLabel];
 
 		self.state = hud.state;
 		self.title = hud.title;
-    }
-    return self;
+	}
+	return self;
 }
 
 
 - (void)setState:(enum STHUDState)state {
-    if (state != _state) {
-        _state = state;
-        switch (state) {
-            case STHUDStateIndeterminate:
-                [_activityIndicatorView startAnimating];
-                _activityIndicatorView.hidden = NO;
-                break;
-            default:
-                [_activityIndicatorView stopAnimating];
-                _activityIndicatorView.hidden = YES;
-                break;
-        }
-        [self setNeedsLayout];
-        [self setNeedsDisplay];
-    }
+	if (state != _state) {
+		_state = state;
+		switch (state) {
+			case STHUDStateIndeterminate:
+				[_activityIndicatorView startAnimating];
+				_activityIndicatorView.hidden = NO;
+				break;
+			default:
+				[_activityIndicatorView stopAnimating];
+				_activityIndicatorView.hidden = YES;
+				break;
+		}
+		[self setNeedsLayout];
+		[self setNeedsDisplay];
+	}
 }
 
 - (void)setTitle:(NSString *)title {
-    _titleLabel.text = title;
-    [self setNeedsLayout];
-    [self setNeedsDisplay];
+	_titleLabel.text = title;
+	[self setNeedsLayout];
+	[self setNeedsDisplay];
 }
 
+
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-    if (newSuperview) {
-        self.frame = STRectCenter(newSuperview.bounds, self.frame);
+	if (newSuperview) {
+		self.frame = STRectCenter(newSuperview.bounds, self.frame);
 	}
 }
 
 
 - (void)drawRect:(CGRect)rect {
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
+	CGContextRef ctx = UIGraphicsGetCurrentContext();
 
-    CGPathRef roundedRectPath = STRoundedRectPathCreate(self.bounds, 16);
-    CGContextAddPath(ctx, roundedRectPath);
-    CGContextSetRGBFillColor(ctx, 0, 0, 0, .5);
-    CGContextFillPath(ctx);
-    CGPathRelease(roundedRectPath);
+	CGPathRef roundedRectPath = STRoundedRectPathCreate(self.bounds, 16);
+	CGContextAddPath(ctx, roundedRectPath);
+	CGContextSetRGBFillColor(ctx, 0, 0, 0, .5);
+	CGContextFillPath(ctx);
+	CGPathRelease(roundedRectPath);
 
-    [[UIColor whiteColor] set];
+	[[UIColor whiteColor] set];
 
-    switch (_state) {
-        case STHUDStateIndeterminate:
-            break;
-        case STHUDStateSuccessful:
-        case STHUDStateFailed: {
+	switch (_state) {
+		case STHUDStateIndeterminate:
+			break;
+		case STHUDStateSuccessful:
+		case STHUDStateFailed: {
 			UIImage * const image = _state == STHUDStateSuccessful ? gSTHUDViewSuccessImage : gSTHUDViewFailureImage;
 
-            CGRect dingbatRect = (CGRect){ .size = (CGSize){ .width = 48, .height = 48 } };
-            dingbatRect = STRectCenter(_activityIndicatorView.frame, dingbatRect);
+			CGRect dingbatRect = (CGRect){ .size = (CGSize){ .width = 48, .height = 48 } };
+			dingbatRect = STRectCenter(_activityIndicatorView.frame, dingbatRect);
 			[image drawInRect:dingbatRect];
-        }   break;
-    }
+		}   break;
+	}
 }
 
 

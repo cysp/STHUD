@@ -15,6 +15,7 @@
 
 CGPoint STPointIntegral(CGPoint point);
 
+
 enum {
     STRectAlignXLeft   = 0x01,
     STRectAlignXCenter = 0x02,

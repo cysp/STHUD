@@ -38,6 +38,7 @@
 	[[STHUDWindow sharedWindow] removeHUD:self];
 }
 
+
 + (BOOL)automaticallyNotifiesObserversOfState { return NO; }
 @synthesize state = _state;
 - (void)setState:(enum STHUDState)state {

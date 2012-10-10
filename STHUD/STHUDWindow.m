@@ -56,7 +56,7 @@ static CGRect CGRectScreenBoundsForOrientation(UIScreen *, UIInterfaceOrientatio
 - (id)initWithFrame:(CGRect)frame {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
 
-    if ((self = [super initWithFrame:frame])) {
+	if ((self = [super initWithFrame:frame])) {
 		self.windowLevel = (UIWindowLevelNormal + UIWindowLevelAlert) / 2.f;
 		self.userInteractionEnabled = NO;
 
@@ -73,8 +73,8 @@ static CGRect CGRectScreenBoundsForOrientation(UIScreen *, UIInterfaceOrientatio
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationStatusBarOrientationWillChange:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
 		UIApplication * const application = [UIApplication sharedApplication];
 		[self setInterfaceOrientation:application.statusBarOrientation animated:NO];
-    }
-    return self;
+	}
+	return self;
 }
 
 - (void)dealloc {
@@ -137,22 +137,22 @@ static CGRect CGRectScreenBoundsForOrientation(UIScreen *, UIInterfaceOrientatio
 
 @synthesize modal = _modal;
 - (void)setModal:(BOOL)modal {
-    [self setModal:modal animated:NO];
+	[self setModal:modal animated:NO];
 }
 - (void)setModal:(BOOL)modal animated:(BOOL)animated {
-    if (modal != _modal) {
-        _modal = modal;
+	if (modal != _modal) {
+		_modal = modal;
 
-        void(^animations)(void) = ^{
-            self.userInteractionEnabled = _modal;
-            self.backgroundColor = [UIColor colorWithWhite:0 alpha:(_modal ? .2 : 0 )];
-        };
-        if (animated) {
-            [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionAllowAnimatedContent|UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:animations completion:nil];
-        } else {
-            animations();
+		void(^animations)(void) = ^{
+			self.userInteractionEnabled = _modal;
+			self.backgroundColor = [UIColor colorWithWhite:0 alpha:(_modal ? .2 : 0 )];
+		};
+		if (animated) {
+			[UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionAllowAnimatedContent|UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:animations completion:nil];
+		} else {
+			animations();
 		}
-    }
+	}
 }
 
 
@@ -169,6 +169,7 @@ static CGRect CGRectScreenBoundsForOrientation(UIScreen *, UIInterfaceOrientatio
 
 	[self setModal:isModal animated:YES];
 }
+
 
 @synthesize interfaceOrientation = _interfaceOrientation;
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -198,6 +199,7 @@ static CGRect CGRectScreenBoundsForOrientation(UIScreen *, UIInterfaceOrientatio
 		}
 	}
 }
+
 
 - (void)applicationStatusBarOrientationWillChange:(NSNotification *)note {
 	UIInterfaceOrientation const interfaceOrientation = (UIInterfaceOrientation)[[note.userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey] unsignedIntegerValue];
@@ -231,6 +233,7 @@ static CGRect CGRectScreenBoundsForOrientation(UIScreen *, UIInterfaceOrientatio
 
 @end
 
+
 static CGFloat UIInterfaceOrientationTransformForRotation(UIInterfaceOrientation interfaceOrientation) {
 	switch (interfaceOrientation) {
 		case UIInterfaceOrientationPortrait:
@@ -245,6 +248,7 @@ static CGFloat UIInterfaceOrientationTransformForRotation(UIInterfaceOrientation
 	NSCAssert(0, @"unreachable", nil);
 	return 0;
 }
+
 
 static NSTimeInterval UIInterfaceOrientationAnimationDuration(UIApplication *application, UIInterfaceOrientation from, UIInterfaceOrientation to) {
 	if (from == to) {
@@ -263,6 +267,7 @@ static NSTimeInterval UIInterfaceOrientationAnimationDuration(UIApplication *app
 
 	return baseDuration;
 }
+
 
 static CGRect CGRectScreenBoundsForOrientation(UIScreen *screen, UIInterfaceOrientation interfaceOrientation) {
 	CGRect const bounds = [screen bounds];
