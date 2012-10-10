@@ -74,7 +74,7 @@ static const unsigned char STHUDViewSuccessImageChars[] = {
 	0x00, 0x87, 0x89, 0x03, 0x25, 0xe7, 0xbb, 0x93, 0xaa, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e,
 	0x44, 0xae, 0x42, 0x60, 0x82
 };
-const void *STHUDViewSuccessImageBytes = (const void *)STHUDViewSuccessImageChars;
+const void * const STHUDViewSuccessImageBytes = (const void *)STHUDViewSuccessImageChars;
 unsigned long STHUDViewSuccessImageSize = 949;
 
 static const unsigned char STHUDViewFailureImageChars[] = {
@@ -147,5 +147,5 @@ static const unsigned char STHUDViewFailureImageChars[] = {
 	0x84, 0x2d, 0x87, 0x47, 0x3b, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60,
 	0x82
 };
-const void *STHUDViewFailureImageBytes = (const void *)STHUDViewFailureImageChars;
+const void * const STHUDViewFailureImageBytes = (const void *)STHUDViewFailureImageChars;
 unsigned long STHUDViewFailureImageSize = 1073;

@@ -12,8 +12,8 @@
 #import <Foundation/Foundation.h>
 
 
-extern const void *STHUDViewSuccessImageBytes;
+extern const void * const STHUDViewSuccessImageBytes;
 extern unsigned long STHUDViewSuccessImageSize;
 
-extern const void *STHUDViewFailureImageBytes;
+extern const void * const STHUDViewFailureImageBytes;
 extern unsigned long STHUDViewFailureImageSize;
