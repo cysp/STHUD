@@ -82,6 +82,21 @@ static CGRect CGRectScreenBoundsForOrientation(UIScreen *, UIInterfaceOrientatio
 }
 
 
+// this dirty hack is to work around this window, being uppermost, taking control of the status bar style
+- (UIViewController *)rootViewController {
+    UIWindow *window = nil;
+    UIApplication * const application = [UIApplication sharedApplication];
+    id<UIApplicationDelegate> const applicationDelegate = application.delegate;
+    if ([applicationDelegate respondsToSelector:@selector(window)]) {
+        window = applicationDelegate.window;
+    }
+    if (!window) {
+        window = [application keyWindow];
+    }
+    return window.rootViewController;
+}
+
+
 - (void)addHUD:(STHUD *)hud {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
 
