@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C55125C18A8D40D00CFB4EA /* STHUDHostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C55125B18A8D40D00CFB4EA /* STHUDHostView.m */; };
+		2C55125F18A8D59300CFB4EA /* STHUDDemoHostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C55125E18A8D59300CFB4EA /* STHUDDemoHostView.m */; };
 		2C8379481611C21F00BE166B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8379471611C21F00BE166B /* Default-568h@2x.png */; };
 		2C8379761611C7C900BE166B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0D15D3EA0D002AA53C /* Foundation.framework */; };
 		2C8379831611C7E200BE166B /* STGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D9915D7B86D002AA53C /* STGeometry.m */; };
@@ -54,6 +55,8 @@
 		2C2FDE981625877D00BDF161 /* STHUD-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STHUD-Release.xcconfig"; sourceTree = "<group>"; };
 		2C55125A18A8D40D00CFB4EA /* STHUDHostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDHostView.h; sourceTree = "<group>"; };
 		2C55125B18A8D40D00CFB4EA /* STHUDHostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDHostView.m; sourceTree = "<group>"; };
+		2C55125D18A8D59300CFB4EA /* STHUDDemoHostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDDemoHostView.h; sourceTree = "<group>"; };
+		2C55125E18A8D59300CFB4EA /* STHUDDemoHostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDDemoHostView.m; sourceTree = "<group>"; };
 		2C8379471611C21F00BE166B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C8379751611C7C900BE166B /* libSTHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8379841611C89700BE166B /* STHUDHostWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDHostWindow.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				2CDE1D1B15D3EA0D002AA53C /* STHUDDemoApplicationDelegate.m */,
 				2CDE1D2315D3EA0D002AA53C /* STHUDDemoViewController.h */,
 				2CDE1D2415D3EA0D002AA53C /* STHUDDemoViewController.m */,
+				2C55125D18A8D59300CFB4EA /* STHUDDemoHostView.h */,
+				2C55125E18A8D59300CFB4EA /* STHUDDemoHostView.m */,
 				2C8379701611C5B500BE166B /* Resources */,
 			);
 			path = STHUDDemo;
@@ -270,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C55125F18A8D59300CFB4EA /* STHUDDemoHostView.m in Sources */,
 				2CDE1D1815D3EA0D002AA53C /* main.m in Sources */,
 				2CDE1D1C15D3EA0D002AA53C /* STHUDDemoApplicationDelegate.m in Sources */,
 				2CDE1D2515D3EA0D002AA53C /* STHUDDemoViewController.m in Sources */,
@@ -369,6 +375,7 @@
 		2CDE1D3E15D3EA0D002AA53C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/STHUDDemo/STHUDDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -379,6 +386,7 @@
 		2CDE1D3F15D3EA0D002AA53C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/STHUDDemo/STHUDDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
