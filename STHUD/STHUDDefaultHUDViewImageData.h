@@ -1,5 +1,5 @@
 //
-//  STHUDViewImageData.h
+//  STHUDDefaultHUDViewImageData.h
 //  STHUD
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,8 +12,8 @@
 #import <Foundation/Foundation.h>
 
 
-extern const void * const STHUDViewSuccessImageBytes;
-extern unsigned long STHUDViewSuccessImageSize;
+extern const void * const STHUDDefaultHUDViewSuccessImageBytes;
+extern unsigned long const STHUDDefaultHUDViewSuccessImageSize;
 
-extern const void * const STHUDViewFailureImageBytes;
-extern unsigned long STHUDViewFailureImageSize;
+extern const void * const STHUDDefaultHUDViewFailureImageBytes;
+extern unsigned long const STHUDDefaultHUDViewFailureImageSize;

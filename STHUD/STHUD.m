@@ -6,28 +6,33 @@
 //  License, v. 2.0. If a copy of the MPL was not distributed with this
 //  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
-//  Copyright (c) 2012 Scott Talbot. All rights reserved.
+//  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
 #import "STHUD.h"
 
-#import "STHUDWindow.h"
+#import "STHUDHostWindow.h"
 
 
 @implementation STHUD {
 @private
+	id<STHUDHost> _host;
 	NSString *_title;
 	BOOL _modal;
 	NSCountedSet *_selfRetains;
 }
 
 - (id)init {
+	return [self initWithHost:STHUDDefaultHostWindow.sharedWindow];
+}
+- (id)initWithHost:(id<STHUDHost>)host {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
-
+	NSParameterAssert(host);
 	if ((self = [super init])) {
+		_host = host;
 		_state = STHUDStateIndeterminate;
 		_selfRetains = [[NSCountedSet alloc] init];
-		[[STHUDWindow sharedWindow] addHUD:self];
+		[_host addHUD:self];
 	}
 	return self;
 }
@@ -35,7 +40,7 @@
 - (void)dealloc {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
 
-	[[STHUDWindow sharedWindow] removeHUD:self];
+	[_host removeHUD:self];
 }
 
 

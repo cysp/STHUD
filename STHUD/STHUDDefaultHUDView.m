@@ -1,27 +1,26 @@
 //
-//  STHUDView.m
+//  STHUDDefaultHUDView.m
 //  STHUD
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
 //  License, v. 2.0. If a copy of the MPL was not distributed with this
 //  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
-//  Copyright (c) 2012 Scott Talbot. All rights reserved.
+//  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
-#import "STHUDView.h"
-
-#import "STHUDViewImageData.h"
+#import "STHUDDefaultHUDView.h"
+#import "STHUDDefaultHUDViewImageData.h"
 
 #import "STHUD.h"
 #import "STGeometry.h"
 
 
-static UIImage *gSTHUDViewSuccessImage = nil;
-static UIImage *gSTHUDViewFailureImage = nil;
+static UIImage *gSTHUDDefaultHUDViewSuccessImage = nil;
+static UIImage *gSTHUDDefaultHUDViewFailureImage = nil;
 
 
-@implementation STHUDView {
+@implementation STHUDDefaultHUDView {
 @private
 	__unsafe_unretained STHUD *_hud;
 
@@ -31,11 +30,11 @@ static UIImage *gSTHUDViewFailureImage = nil;
 }
 
 + (void)initialize {
-	if (self == [STHUDView class]) {
-		NSData * const STHUDViewSuccessImageData = [[NSData alloc] initWithBytesNoCopy:(void *)STHUDViewSuccessImageBytes length:STHUDViewSuccessImageSize freeWhenDone:NO];
-		gSTHUDViewSuccessImage = [[UIImage alloc] initWithData:STHUDViewSuccessImageData scale:2.f];
-		NSData * const STHUDViewFailureImageData = [[NSData alloc] initWithBytesNoCopy:(void *)STHUDViewFailureImageBytes length:STHUDViewFailureImageSize freeWhenDone:NO];
-		gSTHUDViewFailureImage = [[UIImage alloc] initWithData:STHUDViewFailureImageData scale:2.f];
+	if (self == [STHUDDefaultHUDView class]) {
+		NSData * const STHUDDefaultHUDViewSuccessImageData = [[NSData alloc] initWithBytesNoCopy:(void *)STHUDDefaultHUDViewSuccessImageBytes length:STHUDDefaultHUDViewSuccessImageSize freeWhenDone:NO];
+		gSTHUDDefaultHUDViewSuccessImage = [[UIImage alloc] initWithData:STHUDDefaultHUDViewSuccessImageData scale:2.f];
+		NSData * const STHUDDefaultHUDViewFailureImageData = [[NSData alloc] initWithBytesNoCopy:(void *)STHUDDefaultHUDViewFailureImageBytes length:STHUDDefaultHUDViewFailureImageSize freeWhenDone:NO];
+		gSTHUDDefaultHUDViewFailureImage = [[UIImage alloc] initWithData:STHUDDefaultHUDViewFailureImageData scale:2.f];
 	}
 }
 
@@ -127,7 +126,7 @@ static UIImage *gSTHUDViewFailureImage = nil;
 			break;
 		case STHUDStateSuccessful:
 		case STHUDStateFailed: {
-			UIImage * const image = _state == STHUDStateSuccessful ? gSTHUDViewSuccessImage : gSTHUDViewFailureImage;
+			UIImage * const image = _state == STHUDStateSuccessful ? gSTHUDDefaultHUDViewSuccessImage : gSTHUDDefaultHUDViewFailureImage;
 
 			CGRect dingbatRect = (CGRect){ .size = (CGSize){ .width = 48, .height = 48 } };
 			dingbatRect = STRectCenter(_activityIndicatorView.frame, dingbatRect);

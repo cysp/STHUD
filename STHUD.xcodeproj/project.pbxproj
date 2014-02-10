@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C55125C18A8D40D00CFB4EA /* STHUDHostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C55125B18A8D40D00CFB4EA /* STHUDHostView.m */; };
 		2C8379481611C21F00BE166B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8379471611C21F00BE166B /* Default-568h@2x.png */; };
 		2C8379761611C7C900BE166B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0D15D3EA0D002AA53C /* Foundation.framework */; };
 		2C8379831611C7E200BE166B /* STGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D9915D7B86D002AA53C /* STGeometry.m */; };
-		2C8379861611C89700BE166B /* STHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8379851611C89700BE166B /* STHUDWindow.m */; };
+		2C8379861611C89700BE166B /* STHUDHostWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8379851611C89700BE166B /* STHUDHostWindow.m */; };
 		2C8379871611C8D700BE166B /* STHUD.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDE1D9615D7AEAF002AA53C /* STHUD.h */; };
 		2C8379881611C8EA00BE166B /* STHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D9715D7AEAF002AA53C /* STHUD.m */; };
 		2C8379891611C9D700BE166B /* libSTHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8379751611C7C900BE166B /* libSTHUD.a */; };
-		2C83798C1611D1BE00BE166B /* STHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C83798B1611D1BE00BE166B /* STHUDView.m */; };
-		2C83798F1611E9F300BE166B /* STHUDViewImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C83798E1611E9F300BE166B /* STHUDViewImageData.m */; };
+		2C83798C1611D1BE00BE166B /* STHUDDefaultHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C83798B1611D1BE00BE166B /* STHUDDefaultHUDView.m */; };
+		2C83798F1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C83798E1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m */; };
 		2CDE1D0C15D3EA0D002AA53C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0B15D3EA0D002AA53C /* UIKit.framework */; };
 		2CDE1D0E15D3EA0D002AA53C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0D15D3EA0D002AA53C /* Foundation.framework */; };
 		2CDE1D1015D3EA0D002AA53C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0F15D3EA0D002AA53C /* CoreGraphics.framework */; };
@@ -51,14 +52,16 @@
 		2C2FDE961625873600BDF161 /* STHUD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = STHUD.xcconfig; sourceTree = "<group>"; };
 		2C2FDE971625876200BDF161 /* STHUD-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STHUD-Debug.xcconfig"; sourceTree = "<group>"; };
 		2C2FDE981625877D00BDF161 /* STHUD-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STHUD-Release.xcconfig"; sourceTree = "<group>"; };
+		2C55125A18A8D40D00CFB4EA /* STHUDHostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDHostView.h; sourceTree = "<group>"; };
+		2C55125B18A8D40D00CFB4EA /* STHUDHostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDHostView.m; sourceTree = "<group>"; };
 		2C8379471611C21F00BE166B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C8379751611C7C900BE166B /* libSTHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C8379841611C89700BE166B /* STHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDWindow.h; sourceTree = "<group>"; };
-		2C8379851611C89700BE166B /* STHUDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDWindow.m; sourceTree = "<group>"; };
-		2C83798A1611D1BE00BE166B /* STHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDView.h; sourceTree = "<group>"; };
-		2C83798B1611D1BE00BE166B /* STHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDView.m; sourceTree = "<group>"; };
-		2C83798D1611E9F300BE166B /* STHUDViewImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDViewImageData.h; sourceTree = "<group>"; };
-		2C83798E1611E9F300BE166B /* STHUDViewImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDViewImageData.m; sourceTree = "<group>"; };
+		2C8379841611C89700BE166B /* STHUDHostWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDHostWindow.h; sourceTree = "<group>"; };
+		2C8379851611C89700BE166B /* STHUDHostWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDHostWindow.m; sourceTree = "<group>"; };
+		2C83798A1611D1BE00BE166B /* STHUDDefaultHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDDefaultHUDView.h; sourceTree = "<group>"; };
+		2C83798B1611D1BE00BE166B /* STHUDDefaultHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDDefaultHUDView.m; sourceTree = "<group>"; };
+		2C83798D1611E9F300BE166B /* STHUDDefaultHUDViewImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDDefaultHUDViewImageData.h; sourceTree = "<group>"; };
+		2C83798E1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDDefaultHUDViewImageData.m; sourceTree = "<group>"; };
 		2CDE1D0715D3EA0D002AA53C /* STHUDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STHUDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDE1D0B15D3EA0D002AA53C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CDE1D0D15D3EA0D002AA53C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +118,7 @@
 				2CDE1D0815D3EA0D002AA53C /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		2CDE1D0815D3EA0D002AA53C /* Products */ = {
 			isa = PBXGroup;
@@ -154,12 +158,14 @@
 			children = (
 				2CDE1D9615D7AEAF002AA53C /* STHUD.h */,
 				2CDE1D9715D7AEAF002AA53C /* STHUD.m */,
-				2C8379841611C89700BE166B /* STHUDWindow.h */,
-				2C8379851611C89700BE166B /* STHUDWindow.m */,
-				2C83798A1611D1BE00BE166B /* STHUDView.h */,
-				2C83798B1611D1BE00BE166B /* STHUDView.m */,
-				2C83798D1611E9F300BE166B /* STHUDViewImageData.h */,
-				2C83798E1611E9F300BE166B /* STHUDViewImageData.m */,
+				2C8379841611C89700BE166B /* STHUDHostWindow.h */,
+				2C8379851611C89700BE166B /* STHUDHostWindow.m */,
+				2C55125A18A8D40D00CFB4EA /* STHUDHostView.h */,
+				2C55125B18A8D40D00CFB4EA /* STHUDHostView.m */,
+				2C83798A1611D1BE00BE166B /* STHUDDefaultHUDView.h */,
+				2C83798B1611D1BE00BE166B /* STHUDDefaultHUDView.m */,
+				2C83798D1611E9F300BE166B /* STHUDDefaultHUDViewImageData.h */,
+				2C83798E1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m */,
 				2CDE1D9B15D7B877002AA53C /* STGeometry.h */,
 				2CDE1D9915D7B86D002AA53C /* STGeometry.m */,
 				2C2FDE961625873600BDF161 /* STHUD.xcconfig */,
@@ -214,7 +220,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ST;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Scott Talbot";
 			};
 			buildConfigurationList = 2CDE1D0115D3EA0D002AA53C /* Build configuration list for PBXProject "STHUD" */;
@@ -252,10 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8379831611C7E200BE166B /* STGeometry.m in Sources */,
-				2C8379861611C89700BE166B /* STHUDWindow.m in Sources */,
+				2C8379861611C89700BE166B /* STHUDHostWindow.m in Sources */,
 				2C8379881611C8EA00BE166B /* STHUD.m in Sources */,
-				2C83798C1611D1BE00BE166B /* STHUDView.m in Sources */,
-				2C83798F1611E9F300BE166B /* STHUDViewImageData.m in Sources */,
+				2C55125C18A8D40D00CFB4EA /* STHUDHostView.m in Sources */,
+				2C83798C1611D1BE00BE166B /* STHUDDefaultHUDView.m in Sources */,
+				2C83798F1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
