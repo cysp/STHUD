@@ -36,6 +36,8 @@ NS_ENUM(NSUInteger, STHUDState) {
 
 @interface STHUD : NSObject
 
++ (void)setDefaultHost:(id<STHUDHost>)host;
+
 - (id)initWithHost:(id<STHUDHost>)host;
 
 @property (nonatomic,assign) enum STHUDState state;

@@ -14,6 +14,9 @@
 #import "STHUDHostWindow.h"
 
 
+static id<STHUDHost> gSTHUDDefaultHost = nil;
+
+
 @implementation STHUD {
 @private
 	id<STHUDHost> _host;
@@ -22,8 +25,12 @@
 	NSCountedSet *_selfRetains;
 }
 
++ (void)setDefaultHost:(id<STHUDHost>)host {
+	gSTHUDDefaultHost = host;
+}
+
 - (id)init {
-	return [self initWithHost:STHUDDefaultHostWindow.sharedWindow];
+	return [self initWithHost:gSTHUDDefaultHost ?: STHUDDefaultHostWindow.sharedWindow];
 }
 - (id)initWithHost:(id<STHUDHost>)host {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
