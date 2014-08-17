@@ -18,3 +18,7 @@
 - (BOOL)addHUD:(STHUD *)hud __attribute__((objc_requires_super));
 - (BOOL)removeHUD:(STHUD *)hud __attribute__((objc_requires_super));
 @end
+
+
+@interface STHUDDefaultHostView : STHUDHostView
+@end
