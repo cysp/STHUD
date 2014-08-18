@@ -9,7 +9,7 @@
 //  Copyright (c) 2012 Scott Talbot. All rights reserved.
 //
 
-#import "STHUDDefaultHUDViewImageData.h"
+#import <STHUD/STHUDDefaultHUDViewImageData.h>
 
 
 unsigned long const STHUDDefaultHUDViewSuccessImageSize = 949;

@@ -9,11 +9,12 @@
 //  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
-#import "STHUDDefaultHUDView.h"
-#import "STHUDDefaultHUDViewImageData.h"
+#import <STHUD/STHUD.h>
 
-#import "STHUD.h"
-#import "STGeometry.h"
+#import <STHUD/STHUDDefaultHUDView.h>
+#import <STHUD/STHUDDefaultHUDViewImageData.h>
+
+#import <STHUD/STGeometry.h>
 
 
 static UIImage *gSTHUDDefaultHUDViewSuccessImage = nil;

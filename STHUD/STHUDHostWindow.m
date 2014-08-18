@@ -9,9 +9,8 @@
 //  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
-#import "STHUDHostWindow.h"
-
-#import "STHUDDefaultHUDView.h"
+#import <STHUD/STHUDHostWindow.h>
+#import <STHUD/STHUDDefaultHUDView.h>
 
 
 static STHUDDefaultHostWindow *gSTHUDDefaultHostWindow = nil;

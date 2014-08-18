@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "STHUD.h"
+#import <STHUD/STHUD.h>
 
 
 @interface STHUDHostView : UIView<STHUDHost>

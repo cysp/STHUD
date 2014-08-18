@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STHUDHostView.h"
+#import <STHUD/STHUDHostView.h>
 
 
 @interface STHUDDemoHostView : STHUDHostView

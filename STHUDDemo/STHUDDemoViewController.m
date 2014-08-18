@@ -9,7 +9,7 @@
 
 #import "STHUDDemoViewController.h"
 
-#import "STHUD.h"
+#import <STHUD/STHUD.h>
 
 #import "STHUDDemoHostView.h"
 

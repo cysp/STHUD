@@ -9,9 +9,9 @@
 //  Copyright (c) 2014 Scott Talbot. All rights reserved.
 //
 
-#import "STHUDHostView.h"
+#import <STHUD/STHUDHostView.h>
 
-#import "STHUDDefaultHUDView.h"
+#import <STHUD/STHUDDefaultHUDView.h>
 
 
 static const NSTimeInterval kSTHUDViewAnimationDuration = .2f;

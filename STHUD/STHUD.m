@@ -9,9 +9,8 @@
 //  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
-#import "STHUD.h"
-
-#import "STHUDHostWindow.h"
+#import <STHUD/STHUD.h>
+#import <STHUD/STHUDHostWindow.h>
 
 
 static id<STHUDHost> gSTHUDDefaultHost = nil;
