@@ -93,11 +93,12 @@ static id<STHUDHostImplementation> gSTHUDDefaultHost = nil;
 - (void)keepActiveForDuration:(NSTimeInterval)duration {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
 
-	[_selfRetains addObject:self];
+	NSCountedSet * const selfRetains = _selfRetains;
+	[selfRetains addObject:self];
 
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * (double)NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^{
-		[_selfRetains removeObject:self];
+		[selfRetains removeObject:self];
 	});
 }
 

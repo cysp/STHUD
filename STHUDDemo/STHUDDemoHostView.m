@@ -147,20 +147,20 @@ typedef void(^STHUDDemoCADisplayLinkTrampolineBlock)(CADisplayLink *displayLink)
 - (void)st_setVisible:(BOOL)visible {
 	return [self st_setVisible:visible animated:NO];
 }
-- (void)st_setVisible:(BOOL)visible animated:(BOOL)animated {
+- (void)st_setVisible:(BOOL)visible animated:(BOOL __unused)animated {
 	if (visible != _st_visible) {
 		_st_visible = visible;
 
 		UIView * const hudView = _hudView;
 		[UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseIn animations:^{
 			hudView.alpha = visible ? 1 : 0;
-		} completion:^(BOOL finished) {
+		} completion:^(BOOL __unused finished) {
 		}];
 		_displayLink.paused = !_st_visible;
 	}
 }
 
-- (void)displayLinkFired:(CADisplayLink *)displayLink {
+- (void)displayLinkFired:(CADisplayLink * __unused)displayLink {
 	CGFloat const XIncrementR = FLT_EPSILON * 20000;
 	CGFloat const XIncrementG = FLT_EPSILON * 30000;
 	CGFloat const XIncrementB = FLT_EPSILON * 70000;

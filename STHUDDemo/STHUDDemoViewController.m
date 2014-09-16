@@ -29,7 +29,7 @@
 	return [[self alloc] initWithNibName:nil bundle:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation __unused)toInterfaceOrientation {
 	return YES;
 }
 

@@ -16,7 +16,7 @@
 extern CGPoint STPointIntegral(CGPoint point);
 
 
-NS_ENUM(NSUInteger, STRectAlignOptions) {
+typedef NS_OPTIONS(NSUInteger, STRectAlignOptions) {
     STRectAlignXLeft   = 0x01,
     STRectAlignXCenter = 0x02,
     STRectAlignXRight  = 0x03,
@@ -25,7 +25,7 @@ NS_ENUM(NSUInteger, STRectAlignOptions) {
     STRectAlignYBottom = 0x30,
 };
 
-extern CGRect STRectAlign(CGRect outer, CGRect rect, enum STRectAlignOptions options);
+extern CGRect STRectAlign(CGRect outer, CGRect rect, STRectAlignOptions options);
 extern CGRect STRectCenter(CGRect outer, CGRect rect);
 
 

@@ -70,7 +70,7 @@ static const NSTimeInterval kSTHUDDefaultHostViewHUDViewAnimationDuration = .2f;
 	[UIView animateWithDuration:kSTHUDDefaultHostViewHUDViewAnimationDuration delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseIn animations:^{
 		hudView.alpha = 0;
 		hudView.transform = CGAffineTransformMakeScale((CGFloat).666, (CGFloat).666);
-	} completion:^(BOOL finished) {
+	} completion:^(BOOL __unused finished) {
 		[hudView removeFromSuperview];
 	}];
 

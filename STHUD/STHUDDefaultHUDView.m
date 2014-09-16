@@ -40,7 +40,7 @@ static UIImage *gSTHUDDefaultHUDViewFailureImage = nil;
 }
 
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect __unused)frame {
 	return [self initWithHUD:nil];
 }
 
@@ -111,7 +111,7 @@ static UIImage *gSTHUDDefaultHUDViewFailureImage = nil;
 }
 
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect __unused)rect {
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
 
 	CGPathRef roundedRectPath = STRoundedRectPathCreate(self.bounds, 16);

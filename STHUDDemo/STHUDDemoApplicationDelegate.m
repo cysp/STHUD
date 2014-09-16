@@ -25,7 +25,7 @@ STHUDDemoApplicationDelegate *STHUDDemoSharedApplicationDelegate(void) {
 
 @implementation STHUDDemoApplicationDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication * __unused)application didFinishLaunchingWithOptions:(NSDictionary * __unused)launchOptions {
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     STHUDDemoViewController *viewController = [STHUDDemoViewController viewController];

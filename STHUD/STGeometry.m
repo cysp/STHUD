@@ -12,9 +12,18 @@
 #import "STGeometry.h"
 
 
+__attribute__((overloadable,unused))
+static inline float STFloatFloor(float f) {
+	return floorf(f);
+}
+__attribute__((overloadable,unused))
+static inline double STFloatFloor(double f) {
+	return floor(f);
+}
+
 CGPoint STPointIntegral(CGPoint point) {
-	point.x = floorf(point.x);
-	point.y = floorf(point.y);
+	point.x = STFloatFloor(point.x);
+	point.y = STFloatFloor(point.y);
 	return point;
 }
 
@@ -23,7 +32,7 @@ static NSUInteger const STRectAlignOptionsMaskX = 0x0f;
 static NSUInteger const STRectAlignOptionsMaskY = 0xf0;
 
 
-CGRect STRectAlign(CGRect outer, CGRect rect, enum STRectAlignOptions options) {
+CGRect STRectAlign(CGRect outer, CGRect rect, STRectAlignOptions options) {
 	switch (options & STRectAlignOptionsMaskX) {
 		case STRectAlignXLeft:
 			rect.origin.x = outer.origin.x;
@@ -35,7 +44,7 @@ CGRect STRectAlign(CGRect outer, CGRect rect, enum STRectAlignOptions options) {
 			rect.origin.x = outer.origin.x + outer.size.width - rect.size.width;
 			break;
 		default:
-			NSCAssert(0, @"Unhandled alignment options: %d", options & STRectAlignOptionsMaskX);
+			NSCAssert(0, @"Unhandled alignment options: %lu", (unsigned long)(options & STRectAlignOptionsMaskX));
 			break;
 	}
 
@@ -50,7 +59,7 @@ CGRect STRectAlign(CGRect outer, CGRect rect, enum STRectAlignOptions options) {
 			rect.origin.y = outer.origin.y + outer.size.height - rect.size.height;
 			break;
 		default:
-			NSCAssert(0, @"Unhandled alignment options: %d", options & STRectAlignOptionsMaskY);
+			NSCAssert(0, @"Unhandled alignment options: %lu", (unsigned long)(options & STRectAlignOptionsMaskY));
 			break;
 	}
 
