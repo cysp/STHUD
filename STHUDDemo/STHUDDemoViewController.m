@@ -55,18 +55,31 @@
 	UITapGestureRecognizer *backgroundDoubleTapGestureRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
 	backgroundDoubleTapGestureRecogniser.numberOfTapsRequired = 2;
 
+	UITapGestureRecognizer *backgroundTripleTapGestureRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+	backgroundTripleTapGestureRecogniser.numberOfTapsRequired = 3;
+
 	[backgroundTapGestureRecogniser requireGestureRecognizerToFail:backgroundDoubleTapGestureRecogniser];
+	[backgroundTapGestureRecogniser requireGestureRecognizerToFail:backgroundTripleTapGestureRecogniser];;
+
+	[backgroundDoubleTapGestureRecogniser requireGestureRecognizerToFail:backgroundTripleTapGestureRecogniser];
 
 	[view addGestureRecognizer:backgroundTapGestureRecogniser];
 	[view addGestureRecognizer:backgroundDoubleTapGestureRecogniser];
+	[view addGestureRecognizer:backgroundTripleTapGestureRecogniser];
 }
 
 - (void)viewTapped:(UITapGestureRecognizer *)recognizer {
 	STHUD *hud = nil;
-	if (recognizer.numberOfTapsRequired == 1) {
-		hud = [STHUDDemoSharedApplicationDelegate().hudHost hudWithTitle:@"Connecting"];
-	} else {
-		hud = [_hudHostView hudWithTitle:@"Connecting"];
+	switch (recognizer.numberOfTapsRequired) {
+		case 1: {
+			hud = [STHUDDemoSharedApplicationDelegate().hudHost hudWithTitle:@"Connecting"];
+		} break;
+		case 2: {
+			hud = [_hudHostView hudWithTitle:@"Connecting"];
+		} break;
+		case 3: {
+			hud = [STHUDDemoSharedApplicationDelegate().shinyHUDHost hudWithTitle:@"Connecting"];
+		} break;
 	}
 	hud.modal = YES;
 

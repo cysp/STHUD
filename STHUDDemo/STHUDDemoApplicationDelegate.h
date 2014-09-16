@@ -14,6 +14,7 @@
 @interface STHUDDemoApplicationDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic,strong,readonly) id<STHUDHost> hudHost;
+@property (nonatomic,strong,readonly) id<STHUDHost> shinyHUDHost;
 @end
 
 extern STHUDDemoApplicationDelegate *STHUDDemoSharedApplicationDelegate();

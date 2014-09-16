@@ -18,6 +18,7 @@
 		2C83798C1611D1BE00BE166B /* STHUDDefaultHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C83798B1611D1BE00BE166B /* STHUDDefaultHUDView.m */; };
 		2C83798F1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C83798E1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m */; };
 		2CBEEF2019C85E73005096DE /* STHUDDefaultHostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBEEF1F19C85E73005096DE /* STHUDDefaultHostView.m */; };
+		2CBEEF2319C864E4005096DE /* STHUDNewShinyHostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBEEF2219C864E4005096DE /* STHUDNewShinyHostView.m */; };
 		2CDE1D0C15D3EA0D002AA53C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0B15D3EA0D002AA53C /* UIKit.framework */; };
 		2CDE1D0E15D3EA0D002AA53C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0D15D3EA0D002AA53C /* Foundation.framework */; };
 		2CDE1D1015D3EA0D002AA53C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0F15D3EA0D002AA53C /* CoreGraphics.framework */; };
@@ -65,6 +66,8 @@
 		2C83798E1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDDefaultHUDViewImageData.m; sourceTree = "<group>"; };
 		2CBEEF1E19C85E73005096DE /* STHUDDefaultHostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDDefaultHostView.h; sourceTree = "<group>"; };
 		2CBEEF1F19C85E73005096DE /* STHUDDefaultHostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDDefaultHostView.m; sourceTree = "<group>"; };
+		2CBEEF2119C864E4005096DE /* STHUDNewShinyHostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDNewShinyHostView.h; sourceTree = "<group>"; };
+		2CBEEF2219C864E4005096DE /* STHUDNewShinyHostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDNewShinyHostView.m; sourceTree = "<group>"; };
 		2CDE1D0715D3EA0D002AA53C /* STHUDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STHUDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDE1D0B15D3EA0D002AA53C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CDE1D0D15D3EA0D002AA53C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -171,6 +174,8 @@
 				2C83798B1611D1BE00BE166B /* STHUDDefaultHUDView.m */,
 				2C83798D1611E9F300BE166B /* STHUDDefaultHUDViewImageData.h */,
 				2C83798E1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m */,
+				2CBEEF2119C864E4005096DE /* STHUDNewShinyHostView.h */,
+				2CBEEF2219C864E4005096DE /* STHUDNewShinyHostView.m */,
 				2CDE1D9B15D7B877002AA53C /* STGeometry.h */,
 				2CDE1D9915D7B86D002AA53C /* STGeometry.m */,
 				2C2FDE961625873600BDF161 /* STHUD.xcconfig */,
@@ -267,6 +272,7 @@
 				2C8379881611C8EA00BE166B /* STHUD.m in Sources */,
 				2C55125C18A8D40D00CFB4EA /* STHUDBaseHostView.m in Sources */,
 				2C83798C1611D1BE00BE166B /* STHUDDefaultHUDView.m in Sources */,
+				2CBEEF2319C864E4005096DE /* STHUDNewShinyHostView.m in Sources */,
 				2C83798F1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

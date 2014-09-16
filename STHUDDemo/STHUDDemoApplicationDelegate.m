@@ -9,6 +9,7 @@
 
 #import <STHUD/STHUD.h>
 #import <STHUD/STHUDDefaultHostView.h>
+#import <STHUD/STHUDNewShinyHostView.h>
 
 #import "STHUDDemoViewController.h"
 
@@ -20,6 +21,7 @@ STHUDDemoApplicationDelegate *STHUDDemoSharedApplicationDelegate(void) {
 
 @interface STHUDDemoRootNavigationController : UINavigationController
 @property (nonatomic,strong,readonly) id<STHUDHost> hudHost;
+@property (nonatomic,strong,readonly) id<STHUDHost> shinyHUDHost;
 @end
 
 
@@ -52,17 +54,27 @@ STHUDDemoApplicationDelegate *STHUDDemoSharedApplicationDelegate(void) {
 	return nil;
 }
 
+- (id<STHUDHost>)shinyHUDHost {
+	UIViewController *rootViewController = self.window.rootViewController;
+	if ([rootViewController isKindOfClass:[STHUDDemoRootNavigationController class]]) {
+		return ((STHUDDemoRootNavigationController *)rootViewController).shinyHUDHost;
+	}
+	return nil;
+}
+
 @end
 
 
 @implementation STHUDDemoRootNavigationController {
 @private
 	STHUDDefaultHostView *_hudHost;
+	STHUDNewShinyHostView *_shinyHUDHost;
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
 		_hudHost = [[STHUDDefaultHostView alloc] initWithFrame:CGRectZero];
+		_shinyHUDHost = [[STHUDNewShinyHostView alloc] initWithFrame:CGRectZero];
 	}
 	return self;
 }
@@ -72,10 +84,16 @@ STHUDDemoApplicationDelegate *STHUDDemoSharedApplicationDelegate(void) {
 
 	UIView * const view = self.view;
 	CGRect const bounds = view.bounds;
+
 	STHUDDefaultHostView * const hudHost = _hudHost;
 	hudHost.frame = bounds;
 	hudHost.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 	[view addSubview:hudHost];
+
+	STHUDNewShinyHostView * const shinyHUDHost = _shinyHUDHost;
+	shinyHUDHost.frame = bounds;
+	shinyHUDHost.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+	[view addSubview:shinyHUDHost];
 }
 
 - (void)viewDidLayoutSubviews {
