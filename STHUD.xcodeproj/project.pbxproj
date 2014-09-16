@@ -12,7 +12,6 @@
 		2C8379481611C21F00BE166B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8379471611C21F00BE166B /* Default-568h@2x.png */; };
 		2C8379761611C7C900BE166B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D0D15D3EA0D002AA53C /* Foundation.framework */; };
 		2C8379831611C7E200BE166B /* STGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D9915D7B86D002AA53C /* STGeometry.m */; };
-		2C8379861611C89700BE166B /* STHUDHostWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8379851611C89700BE166B /* STHUDHostWindow.m */; };
 		2C8379871611C8D700BE166B /* STHUD.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDE1D9615D7AEAF002AA53C /* STHUD.h */; };
 		2C8379881611C8EA00BE166B /* STHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D9715D7AEAF002AA53C /* STHUD.m */; };
 		2C8379891611C9D700BE166B /* libSTHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8379751611C7C900BE166B /* libSTHUD.a */; };
@@ -59,8 +58,6 @@
 		2C55125E18A8D59300CFB4EA /* STHUDDemoHostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDDemoHostView.m; sourceTree = "<group>"; };
 		2C8379471611C21F00BE166B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C8379751611C7C900BE166B /* libSTHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C8379841611C89700BE166B /* STHUDHostWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDHostWindow.h; sourceTree = "<group>"; };
-		2C8379851611C89700BE166B /* STHUDHostWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDHostWindow.m; sourceTree = "<group>"; };
 		2C83798A1611D1BE00BE166B /* STHUDDefaultHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDDefaultHUDView.h; sourceTree = "<group>"; };
 		2C83798B1611D1BE00BE166B /* STHUDDefaultHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUDDefaultHUDView.m; sourceTree = "<group>"; };
 		2C83798D1611E9F300BE166B /* STHUDDefaultHUDViewImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHUDDefaultHUDViewImageData.h; sourceTree = "<group>"; };
@@ -163,8 +160,6 @@
 			children = (
 				2CDE1D9615D7AEAF002AA53C /* STHUD.h */,
 				2CDE1D9715D7AEAF002AA53C /* STHUD.m */,
-				2C8379841611C89700BE166B /* STHUDHostWindow.h */,
-				2C8379851611C89700BE166B /* STHUDHostWindow.m */,
 				2C55125A18A8D40D00CFB4EA /* STHUDHostView.h */,
 				2C55125B18A8D40D00CFB4EA /* STHUDHostView.m */,
 				2C83798A1611D1BE00BE166B /* STHUDDefaultHUDView.h */,
@@ -263,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8379831611C7E200BE166B /* STGeometry.m in Sources */,
-				2C8379861611C89700BE166B /* STHUDHostWindow.m in Sources */,
 				2C8379881611C8EA00BE166B /* STHUD.m in Sources */,
 				2C55125C18A8D40D00CFB4EA /* STHUDHostView.m in Sources */,
 				2C83798C1611D1BE00BE166B /* STHUDDefaultHUDView.m in Sources */,

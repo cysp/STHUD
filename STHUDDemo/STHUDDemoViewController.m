@@ -63,7 +63,6 @@
 - (void)viewTapped:(UITapGestureRecognizer *)recognizer {
 	STHUD *hud = nil;
 	if (recognizer.numberOfTapsRequired == 1) {
-		hud = [[STHUD alloc] init];
 	} else {
 		hud = [[STHUD alloc] initWithHost:_hudHostView];
 	}

@@ -10,7 +10,6 @@
 //
 
 #import <STHUD/STHUD.h>
-#import <STHUD/STHUDHostWindow.h>
 
 
 static id<STHUDHost> gSTHUDDefaultHost = nil;
@@ -29,7 +28,7 @@ static id<STHUDHost> gSTHUDDefaultHost = nil;
 }
 
 - (id)init {
-	return [self initWithHost:gSTHUDDefaultHost ?: STHUDDefaultHostWindow.sharedWindow];
+	return [self initWithHost:gSTHUDDefaultHost];
 }
 - (id)initWithHost:(id<STHUDHost>)host {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
