@@ -11,6 +11,7 @@
 
 #import <STHUD/STHUD.h>
 
+#import "STHUDDemoApplicationDelegate.h"
 #import "STHUDDemoHostView.h"
 
 
@@ -63,10 +64,10 @@
 - (void)viewTapped:(UITapGestureRecognizer *)recognizer {
 	STHUD *hud = nil;
 	if (recognizer.numberOfTapsRequired == 1) {
+		hud = [STHUDDemoSharedApplicationDelegate().hudHost hudWithTitle:@"Connecting"];
 	} else {
-		hud = [[STHUD alloc] initWithHost:_hudHostView];
+		hud = [_hudHostView hudWithTitle:@"Connecting"];
 	}
-	hud.title = @"Connecting";
 	hud.modal = YES;
 
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC);

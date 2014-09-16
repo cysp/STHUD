@@ -6,8 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <STHUD/STHUDHostView.h>
+#import <STHUD/STHUDBaseHostView.h>
 
 
-@interface STHUDDemoHostView : STHUDHostView
+@interface STHUDDemoHostView : STHUDBaseHostView
 @end

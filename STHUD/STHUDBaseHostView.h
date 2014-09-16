@@ -1,5 +1,5 @@
 //
-//  STHUDHostView.h
+//  STHUDBaseHostView.h
 //  STHUD
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -14,11 +14,10 @@
 #import <STHUD/STHUD.h>
 
 
-@interface STHUDHostView : UIView<STHUDHost>
+@interface STHUDBaseHostView : UIView<STHUDHost,STHUDHostImplementation>
 - (BOOL)addHUD:(STHUD *)hud __attribute__((objc_requires_super));
 - (BOOL)removeHUD:(STHUD *)hud __attribute__((objc_requires_super));
-@end
-
-
-@interface STHUDDefaultHostView : STHUDHostView
+@property (nonatomic,assign,getter=isModal,readonly) BOOL modal;
+- (void)setModal:(BOOL)modal __attribute__((objc_requires_super));
+- (void)setModal:(BOOL)modal animated:(BOOL)animated __attribute__((objc_requires_super));
 @end

@@ -21,24 +21,20 @@ NS_ENUM(NSUInteger, STHUDState) {
 };
 
 @protocol STHUDHost <NSObject>
+- (STHUD *)hudWithTitle:(NSString *)title;
+@end
+@protocol STHUDHostImplementation <NSObject>
 - (BOOL)addHUD:(STHUD *)hud;
 - (BOOL)removeHUD:(STHUD *)hud;
-@property (nonatomic,assign,getter=isModal) BOOL modal;
-- (void)setModal:(BOOL)modal animated:(BOOL)animated;
-@end
-
-@protocol STHUDView <NSObject>
-- (id)initWithHUD:(STHUD *)hud;
-- (void)setState:(enum STHUDState)state;
-- (void)setTitle:(NSString *)title;
 @end
 
 
 @interface STHUD : NSObject
 
-+ (void)setDefaultHost:(id<STHUDHost>)host;
++ (void)setDefaultHost:(id<STHUDHostImplementation>)host;
 
-- (id)initWithHost:(id<STHUDHost>)host;
+- (id)initWithHost:(id<STHUDHostImplementation>)host;
+- (id)initWithHost:(id<STHUDHostImplementation>)host title:(NSString *)title __attribute__((objc_designated_initializer));
 
 @property (nonatomic,assign) enum STHUDState state;
 @property (nonatomic,copy) NSString *title;
@@ -47,3 +43,6 @@ NS_ENUM(NSUInteger, STHUDState) {
 - (void)keepActiveForDuration:(NSTimeInterval)duration;
 
 @end
+
+
+#import <STHUD/STHUDBaseHostView.h>

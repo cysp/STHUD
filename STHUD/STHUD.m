@@ -12,29 +12,33 @@
 #import <STHUD/STHUD.h>
 
 
-static id<STHUDHost> gSTHUDDefaultHost = nil;
+static id<STHUDHostImplementation> gSTHUDDefaultHost = nil;
 
 
 @implementation STHUD {
 @private
-	id<STHUDHost> _host;
+	id<STHUDHostImplementation> _host;
 	NSString *_title;
 	BOOL _modal;
 	NSCountedSet *_selfRetains;
 }
 
-+ (void)setDefaultHost:(id<STHUDHost>)host {
++ (void)setDefaultHost:(id<STHUDHostImplementation>)host {
 	gSTHUDDefaultHost = host;
 }
 
 - (id)init {
-	return [self initWithHost:gSTHUDDefaultHost];
+	return [self initWithHost:gSTHUDDefaultHost title:nil];
 }
-- (id)initWithHost:(id<STHUDHost>)host {
+- (id)initWithHost:(id<STHUDHostImplementation>)host {
+	return [self initWithHost:host title:nil];
+}
+- (id)initWithHost:(id<STHUDHostImplementation>)host title:(NSString *)title {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
 	NSParameterAssert(host);
 	if ((self = [super init])) {
 		_host = host;
+		_title = title.copy;
 		_state = STHUDStateIndeterminate;
 		_selfRetains = [[NSCountedSet alloc] init];
 		[_host addHUD:self];

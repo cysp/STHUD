@@ -43,6 +43,33 @@
 @end
 
 
+typedef void(^STHUDDemoCADisplayLinkTrampolineBlock)(CADisplayLink *displayLink);
+@interface STHUDDemoCADisplayLinkTrampoline : NSObject
+- (id)initWithBlock:(STHUDDemoCADisplayLinkTrampolineBlock)block;
+- (void)displayLinkFired:(CADisplayLink *)displayLink;
+@end
+@implementation STHUDDemoCADisplayLinkTrampoline {
+@private
+	STHUDDemoCADisplayLinkTrampolineBlock _block;
+}
+- (instancetype)init {
+	return [self initWithBlock:nil];
+}
+- (id)initWithBlock:(STHUDDemoCADisplayLinkTrampolineBlock)block {
+	NSParameterAssert(block);
+	if (!block) {
+		return nil;
+	}
+	if ((self = [super init])) {
+		_block = [block copy];
+	}
+	return self;
+}
+- (void)displayLinkFired:(CADisplayLink *)displayLink {
+	_block(displayLink);
+}
+@end
+
 @interface STHUDDemoHostView ()
 @property (nonatomic,assign,getter=st_isVisible,setter=st_setVisible:) BOOL st_visible;
 - (void)st_setVisible:(BOOL)visible animated:(BOOL)animated;
@@ -51,6 +78,7 @@
 @implementation STHUDDemoHostView {
 @private
 	CADisplayLink *_displayLink;
+	STHUDDemoCADisplayLinkTrampoline *_displayLinkTrampoline;
 	NSUInteger _numberOfHUDsAttached;
 	UIView *_hudView;
 	CGFloat _hudR;
@@ -61,12 +89,18 @@
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
 		CGRect const bounds = self.bounds;
-		_displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkFired:)];
+
+		__typeof__(self) __weak wself = self;
+		_displayLinkTrampoline = [[STHUDDemoCADisplayLinkTrampoline alloc] initWithBlock:^(CADisplayLink *displayLink) {
+			__typeof__(self) const sself = wself;
+			[sself displayLinkFired:displayLink];
+		}];
+		_displayLink = [CADisplayLink displayLinkWithTarget:_displayLinkTrampoline selector:@selector(displayLinkFired:)];
 		[_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 		_displayLink.paused = YES;
 
 		_hudView = [[STHUDDemoHUDView alloc] initWithFrame:bounds];
-		_hudView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+		_hudView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
 		[self addSubview:_hudView];
 		_hudView.userInteractionEnabled = NO;
 		_hudView.alpha = 0;
@@ -95,6 +129,19 @@
 	BOOL const visible = _numberOfHUDsAttached > 0;
 	[self st_setVisible:visible animated:YES];
 	return YES;
+}
+
+- (void)setModal:(BOOL)modal animated:(BOOL)animated {
+	[super setModal:modal animated:animated];
+
+	void(^animations)(void) = ^{
+		self.backgroundColor = [UIColor colorWithWhite:0 alpha:(CGFloat)(modal ? .2 : 0 )];
+	};
+	if (animated) {
+		[UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionAllowAnimatedContent|UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:animations completion:nil];
+	} else {
+		animations();
+	}
 }
 
 - (void)st_setVisible:(BOOL)visible {
