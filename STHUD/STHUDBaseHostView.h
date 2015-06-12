@@ -11,7 +11,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import <STHUD/STHUD.h>
+#import "STHUDProtocols.h"
+@class STHUD;
 
 
 @interface STHUDBaseHostView : UIView<STHUDHost,STHUDHostImplementation>

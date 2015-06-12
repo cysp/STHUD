@@ -10,6 +10,8 @@
 //
 
 #import <STHUD/STHUDBaseHostView.h>
+#import "STHUDBaseHostView.h"
+#import "STHUD.h"
 
 
 @implementation STHUDBaseHostView {
