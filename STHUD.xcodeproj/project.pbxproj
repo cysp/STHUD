@@ -419,6 +419,7 @@
 		};
 		2CDE1D3B15D3EA0D002AA53C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C2FDE961625873600BDF161 /* STHUD.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -462,6 +463,7 @@
 		};
 		2CDE1D3C15D3EA0D002AA53C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C2FDE961625873600BDF161 /* STHUD.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
