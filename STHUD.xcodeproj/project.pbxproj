@@ -25,7 +25,6 @@
 		2CDE1D1815D3EA0D002AA53C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D1715D3EA0D002AA53C /* main.m */; };
 		2CDE1D1C15D3EA0D002AA53C /* STHUDDemoApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D1B15D3EA0D002AA53C /* STHUDDemoApplicationDelegate.m */; };
 		2CDE1D2515D3EA0D002AA53C /* STHUDDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D2415D3EA0D002AA53C /* STHUDDemoViewController.m */; };
-		BFF97A711B2A972500A11FDA /* STHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF97A5A1B2A972400A11FDA /* STHUD.framework */; };
 		BFF97A721B2A972500A11FDA /* STHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BFF97A5A1B2A972400A11FDA /* STHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BFF97A7C1B2A989E00A11FDA /* STHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDE1D9615D7AEAF002AA53C /* STHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFF97A7D1B2A98A400A11FDA /* STHUDNewShinyHostView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CBEEF2119C864E4005096DE /* STHUDNewShinyHostView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,13 +49,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2C8379741611C7C900BE166B;
 			remoteInfo = STHUD;
-		};
-		BFF97A6F1B2A972500A11FDA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2CDE1CFE15D3EA0D002AA53C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BFF97A591B2A972400A11FDA;
-			remoteInfo = "STHUD-iOSS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -136,7 +128,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CDE1D0C15D3EA0D002AA53C /* UIKit.framework in Frameworks */,
-				BFF97A711B2A972500A11FDA /* STHUD.framework in Frameworks */,
 				2CDE1D0E15D3EA0D002AA53C /* Foundation.framework in Frameworks */,
 				2CDE1D1015D3EA0D002AA53C /* CoreGraphics.framework in Frameworks */,
 				2C8379891611C9D700BE166B /* libSTHUD.a in Frameworks */,
@@ -285,7 +276,6 @@
 			);
 			dependencies = (
 				2C8379821611C7D400BE166B /* PBXTargetDependency */,
-				BFF97A701B2A972500A11FDA /* PBXTargetDependency */,
 			);
 			name = STHUDDemo;
 			productName = STHUD;
@@ -409,11 +399,6 @@
 			isa = PBXTargetDependency;
 			target = 2C8379741611C7C900BE166B /* STHUD */;
 			targetProxy = 2C8379811611C7D400BE166B /* PBXContainerItemProxy */;
-		};
-		BFF97A701B2A972500A11FDA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BFF97A591B2A972400A11FDA /* STHUD.framework */;
-			targetProxy = BFF97A6F1B2A972500A11FDA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -663,6 +648,7 @@
 				BFF97A751B2A972500A11FDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

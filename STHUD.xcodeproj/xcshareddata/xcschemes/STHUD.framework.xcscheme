@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BFF97A591B2A972400A11FDA"
-               BuildableName = "STHUD.framework.framework"
+               BuildableName = "STHUD.framework"
                BlueprintName = "STHUD.framework"
                ReferencedContainer = "container:STHUD.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFF97A591B2A972400A11FDA"
-            BuildableName = "STHUD.framework.framework"
+            BuildableName = "STHUD.framework"
             BlueprintName = "STHUD.framework"
             ReferencedContainer = "container:STHUD.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFF97A591B2A972400A11FDA"
-            BuildableName = "STHUD.framework.framework"
+            BuildableName = "STHUD.framework"
             BlueprintName = "STHUD.framework"
             ReferencedContainer = "container:STHUD.xcodeproj">
          </BuildableReference>
