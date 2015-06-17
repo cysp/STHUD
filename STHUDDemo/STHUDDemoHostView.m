@@ -86,6 +86,8 @@ typedef void(^STHUDDemoCADisplayLinkTrampolineBlock)(CADisplayLink *displayLink)
 	CGFloat _hudB;
 }
 
+@synthesize st_visible = _st_visible;
+
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
 		CGRect const bounds = self.bounds;

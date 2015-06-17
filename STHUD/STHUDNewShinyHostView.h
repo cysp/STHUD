@@ -9,7 +9,7 @@
 //  Copyright (c) 2014 Scott Talbot. All rights reserved.
 //
 
-#import <STHUD/STHUD.h>
+#import "STHUDBaseHostView.h"
 
 
 @interface STHUDNewShinyHostView : STHUDBaseHostView

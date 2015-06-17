@@ -20,8 +20,12 @@ STHUDDemoApplicationDelegate *STHUDDemoSharedApplicationDelegate(void) {
 
 
 @interface STHUDDemoRootNavigationController : UINavigationController
-@property (nonatomic,strong,readonly) id<STHUDHost> hudHost;
-@property (nonatomic,strong,readonly) id<STHUDHost> shinyHUDHost;
+//@property (nonatomic,strong,readonly) id<STHUDHost> hudHost;
+//@property (nonatomic,strong,readonly) id<STHUDHost> shinyHUDHost;
+
+- (id<STHUDHost>)hudHost;
+- (id<STHUDHost>)shinyHUDHost;
+
 @end
 
 
@@ -100,6 +104,14 @@ STHUDDemoApplicationDelegate *STHUDDemoSharedApplicationDelegate(void) {
 	[super viewDidLayoutSubviews];
 
 	[self.view bringSubviewToFront:_hudHost];
+}
+
+- (id<STHUDHost>)hudHost {
+	return _hudHost;
+}
+
+- (id<STHUDHost>)shinyHUDHost {
+	return _shinyHUDHost;
 }
 
 @end

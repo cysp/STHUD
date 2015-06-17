@@ -11,23 +11,21 @@
 
 #import <Foundation/Foundation.h>
 
+FOUNDATION_EXPORT double STHUDVersionNumber;
+FOUNDATION_EXPORT const unsigned char STHUDVersionString[];
 
-@class STHUD;
+#import <STHUD/STHUDBaseHostView.h>
+#import <STHUD/STHUDNewShinyHostView.h>
 
-NS_ENUM(NSUInteger, STHUDState) {
+
+#import "STHUDProtocols.h"
+
+
+typedef NS_ENUM(NSUInteger, STHUDState) {
 	STHUDStateIndeterminate = 1,
 	STHUDStateSuccessful,
 	STHUDStateFailed,
 };
-
-@protocol STHUDHost <NSObject>
-- (STHUD *)hudWithTitle:(NSString *)title;
-@end
-@protocol STHUDHostImplementation <NSObject>
-- (BOOL)addHUD:(STHUD *)hud;
-- (BOOL)removeHUD:(STHUD *)hud;
-@end
-
 
 @interface STHUD : NSObject
 
@@ -43,6 +41,3 @@ NS_ENUM(NSUInteger, STHUDState) {
 - (void)keepActiveForDuration:(NSTimeInterval)duration;
 
 @end
-
-
-#import <STHUD/STHUDBaseHostView.h>

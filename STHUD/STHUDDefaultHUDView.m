@@ -68,8 +68,8 @@ static UIImage *gSTHUDDefaultHUDViewFailureImage = nil;
 		_titleLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
 		_titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:.75];
 		_titleLabel.shadowOffset = CGSizeMake(0, .5);
-		_titleLabel.textAlignment = UITextAlignmentCenter;
-		_titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+		_titleLabel.textAlignment = NSTextAlignmentCenter;
+		_titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 		[self addSubview:_titleLabel];
 
 		self.state = hud.state;

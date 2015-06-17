@@ -1,0 +1,6 @@
+//  Copyright (c) 2015 Scott Talbot. All rights reserved.
+
+
+#include "STHUD.xcconfig"
+
+IPHONEOS_DEPLOYMENT_TARGET = 8.0

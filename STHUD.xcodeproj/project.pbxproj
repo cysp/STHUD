@@ -25,6 +25,21 @@
 		2CDE1D1815D3EA0D002AA53C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D1715D3EA0D002AA53C /* main.m */; };
 		2CDE1D1C15D3EA0D002AA53C /* STHUDDemoApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D1B15D3EA0D002AA53C /* STHUDDemoApplicationDelegate.m */; };
 		2CDE1D2515D3EA0D002AA53C /* STHUDDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D2415D3EA0D002AA53C /* STHUDDemoViewController.m */; };
+		BFF97A721B2A972500A11FDA /* STHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BFF97A5A1B2A972400A11FDA /* STHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BFF97A7C1B2A989E00A11FDA /* STHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDE1D9615D7AEAF002AA53C /* STHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFF97A7D1B2A98A400A11FDA /* STHUDNewShinyHostView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CBEEF2119C864E4005096DE /* STHUDNewShinyHostView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFF97A7E1B2A98B600A11FDA /* STHUDBaseHostView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C55125A18A8D40D00CFB4EA /* STHUDBaseHostView.h */; };
+		BFF97A7F1B2A98B600A11FDA /* STHUDDefaultHostView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CBEEF1E19C85E73005096DE /* STHUDDefaultHostView.h */; };
+		BFF97A801B2A98B600A11FDA /* STHUDDefaultHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C83798A1611D1BE00BE166B /* STHUDDefaultHUDView.h */; };
+		BFF97A811B2A98B600A11FDA /* STHUDDefaultHUDViewImageData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C83798D1611E9F300BE166B /* STHUDDefaultHUDViewImageData.h */; };
+		BFF97A821B2A98B600A11FDA /* STGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDE1D9B15D7B877002AA53C /* STGeometry.h */; };
+		BFF97A831B2A98C400A11FDA /* STHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D9715D7AEAF002AA53C /* STHUD.m */; };
+		BFF97A841B2A98C400A11FDA /* STHUDBaseHostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C55125B18A8D40D00CFB4EA /* STHUDBaseHostView.m */; };
+		BFF97A851B2A98C400A11FDA /* STHUDDefaultHostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBEEF1F19C85E73005096DE /* STHUDDefaultHostView.m */; };
+		BFF97A861B2A98C400A11FDA /* STHUDDefaultHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C83798B1611D1BE00BE166B /* STHUDDefaultHUDView.m */; };
+		BFF97A871B2A98C400A11FDA /* STHUDDefaultHUDViewImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C83798E1611E9F300BE166B /* STHUDDefaultHUDViewImageData.m */; };
+		BFF97A881B2A98C400A11FDA /* STHUDNewShinyHostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBEEF2219C864E4005096DE /* STHUDNewShinyHostView.m */; };
+		BFF97A891B2A98C400A11FDA /* STGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D9915D7B86D002AA53C /* STGeometry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +62,17 @@
 				2C8379871611C8D700BE166B /* STHUD.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		BFF97A761B2A972500A11FDA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BFF97A721B2A972500A11FDA /* STHUD.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -82,6 +108,10 @@
 		2CDE1D9715D7AEAF002AA53C /* STHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHUD.m; sourceTree = "<group>"; };
 		2CDE1D9915D7B86D002AA53C /* STGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGeometry.m; sourceTree = "<group>"; };
 		2CDE1D9B15D7B877002AA53C /* STGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STGeometry.h; sourceTree = "<group>"; };
+		BFF97A5A1B2A972400A11FDA /* STHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF97A7A1B2A980900A11FDA /* STHUD-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STHUD-Framework.xcconfig"; sourceTree = "<group>"; };
+		BFF97A7B1B2A988D00A11FDA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFF97A8A1B2AA97300A11FDA /* STHUDProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STHUDProtocols.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +131,13 @@
 				2CDE1D0E15D3EA0D002AA53C /* Foundation.framework in Frameworks */,
 				2CDE1D1015D3EA0D002AA53C /* CoreGraphics.framework in Frameworks */,
 				2C8379891611C9D700BE166B /* libSTHUD.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFF97A561B2A972400A11FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +168,7 @@
 			children = (
 				2CDE1D0715D3EA0D002AA53C /* STHUDDemo.app */,
 				2C8379751611C7C900BE166B /* libSTHUD.a */,
+				BFF97A5A1B2A972400A11FDA /* STHUD.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,7 +202,9 @@
 		2CDE1D9515D7AE8C002AA53C /* STHUD */ = {
 			isa = PBXGroup;
 			children = (
+				BFF97A7B1B2A988D00A11FDA /* Info.plist */,
 				2CDE1D9615D7AEAF002AA53C /* STHUD.h */,
+				BFF97A8A1B2AA97300A11FDA /* STHUDProtocols.h */,
 				2CDE1D9715D7AEAF002AA53C /* STHUD.m */,
 				2C55125A18A8D40D00CFB4EA /* STHUDBaseHostView.h */,
 				2C55125B18A8D40D00CFB4EA /* STHUDBaseHostView.m */,
@@ -179,6 +219,7 @@
 				2CDE1D9B15D7B877002AA53C /* STGeometry.h */,
 				2CDE1D9915D7B86D002AA53C /* STGeometry.m */,
 				2C2FDE961625873600BDF161 /* STHUD.xcconfig */,
+				BFF97A7A1B2A980900A11FDA /* STHUD-Framework.xcconfig */,
 				2C2FDE971625876200BDF161 /* STHUD-Debug.xcconfig */,
 				2C2FDE981625877D00BDF161 /* STHUD-Release.xcconfig */,
 			);
@@ -186,6 +227,23 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BFF97A571B2A972400A11FDA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFF97A7C1B2A989E00A11FDA /* STHUD.h in Headers */,
+				BFF97A7D1B2A98A400A11FDA /* STHUDNewShinyHostView.h in Headers */,
+				BFF97A7E1B2A98B600A11FDA /* STHUDBaseHostView.h in Headers */,
+				BFF97A7F1B2A98B600A11FDA /* STHUDDefaultHostView.h in Headers */,
+				BFF97A801B2A98B600A11FDA /* STHUDDefaultHUDView.h in Headers */,
+				BFF97A811B2A98B600A11FDA /* STHUDDefaultHUDViewImageData.h in Headers */,
+				BFF97A821B2A98B600A11FDA /* STGeometry.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		2C8379741611C7C900BE166B /* STHUD */ = {
@@ -212,6 +270,7 @@
 				2CDE1D0315D3EA0D002AA53C /* Sources */,
 				2CDE1D0415D3EA0D002AA53C /* Frameworks */,
 				2CDE1D0515D3EA0D002AA53C /* Resources */,
+				BFF97A761B2A972500A11FDA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,6 +282,24 @@
 			productReference = 2CDE1D0715D3EA0D002AA53C /* STHUDDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BFF97A591B2A972400A11FDA /* STHUD.framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFF97A731B2A972500A11FDA /* Build configuration list for PBXNativeTarget "STHUD.framework" */;
+			buildPhases = (
+				BFF97A551B2A972400A11FDA /* Sources */,
+				BFF97A561B2A972400A11FDA /* Frameworks */,
+				BFF97A571B2A972400A11FDA /* Headers */,
+				BFF97A581B2A972400A11FDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = STHUD.framework;
+			productName = "STHUD-iOSS";
+			productReference = BFF97A5A1B2A972400A11FDA /* STHUD.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -230,8 +307,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ST;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Scott Talbot";
+				TargetAttributes = {
+					BFF97A591B2A972400A11FDA = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
 			};
 			buildConfigurationList = 2CDE1D0115D3EA0D002AA53C /* Build configuration list for PBXProject "STHUD" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -246,6 +328,7 @@
 			projectRoot = "";
 			targets = (
 				2C8379741611C7C900BE166B /* STHUD */,
+				BFF97A591B2A972400A11FDA /* STHUD.framework */,
 				2CDE1D0615D3EA0D002AA53C /* STHUDDemo */,
 			);
 		};
@@ -257,6 +340,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8379481611C21F00BE166B /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFF97A581B2A972400A11FDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +378,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFF97A551B2A972400A11FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFF97A831B2A98C400A11FDA /* STHUD.m in Sources */,
+				BFF97A841B2A98C400A11FDA /* STHUDBaseHostView.m in Sources */,
+				BFF97A851B2A98C400A11FDA /* STHUDDefaultHostView.m in Sources */,
+				BFF97A861B2A98C400A11FDA /* STHUDDefaultHUDView.m in Sources */,
+				BFF97A871B2A98C400A11FDA /* STHUDDefaultHUDViewImageData.m in Sources */,
+				BFF97A881B2A98C400A11FDA /* STHUDNewShinyHostView.m in Sources */,
+				BFF97A891B2A98C400A11FDA /* STGeometry.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -315,6 +419,7 @@
 		};
 		2CDE1D3B15D3EA0D002AA53C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C2FDE961625873600BDF161 /* STHUD.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -346,6 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = (
@@ -357,6 +463,7 @@
 		};
 		2CDE1D3C15D3EA0D002AA53C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C2FDE961625873600BDF161 /* STHUD.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -402,6 +509,7 @@
 					"/Applications/Xcode6-Beta5.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/STHUDDemo/STHUDDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -417,8 +525,91 @@
 					"/Applications/Xcode6-Beta5.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/STHUDDemo/STHUDDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BFF97A741B2A972500A11FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF97A7A1B2A980900A11FDA /* STHUD-Framework.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = STHUD/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = STHUD;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BFF97A751B2A972500A11FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF97A7A1B2A980900A11FDA /* STHUD-Framework.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = STHUD/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = STHUD;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -448,6 +639,15 @@
 			buildConfigurations = (
 				2CDE1D3E15D3EA0D002AA53C /* Debug */,
 				2CDE1D3F15D3EA0D002AA53C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFF97A731B2A972500A11FDA /* Build configuration list for PBXNativeTarget "STHUD.framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFF97A741B2A972500A11FDA /* Debug */,
+				BFF97A751B2A972500A11FDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
