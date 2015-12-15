@@ -15,10 +15,12 @@
 
 
 static const NSTimeInterval kSTHUDNewShinyHostViewHUDViewAppearanceAnimationDuration = 1./4.;
+static const NSTimeInterval kSTHUDNewShinyHostViewHUDViewChangeAnimationDuration = 1./4.;
 static const NSTimeInterval kSTHUDNewShinyHostViewHUDViewDismissalAnimationDuration = 1./8.;
 
 
 static CGSize const STHUDNewShinyHUDViewNaturalSize = (CGSize){ .width = 80, .height = 80 };
+static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top = -2, .left = 4, .bottom = 8 , .right = 4};
 
 @interface STHUDNewShinyHUDView : UIView
 @end
@@ -26,6 +28,7 @@ static CGSize const STHUDNewShinyHUDViewNaturalSize = (CGSize){ .width = 80, .he
 @implementation STHUDNewShinyHUDView {
 @private
 	CAShapeLayer *_activityIndicatorLayer;
+	UILabel *_titleLabel;
 }
 - (instancetype)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
@@ -48,19 +51,52 @@ static CGSize const STHUDNewShinyHUDViewNaturalSize = (CGSize){ .width = 80, .he
 		CGPathAddArc(path, NULL, 40, 40, 20, (CGFloat)(M_PI_4), (CGFloat)(2 * M_PI), false);
 		activityIndicatorLayer.path = path;
 		CGPathRelease(path), path = NULL;
+		
+		_titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+		_titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+		_titleLabel.font = [UIFont systemFontOfSize:12];
+		_titleLabel.backgroundColor = [UIColor clearColor];
+		_titleLabel.textColor = [UIColor darkGrayColor];
+		_titleLabel.textAlignment = UITextAlignmentCenter;
+		_titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+		_titleLabel.numberOfLines = 0;
+		[self addSubview:_titleLabel];
 
 		[self.layer addSublayer:activityIndicatorLayer];
 	}
 	return self;
 }
+
 - (void)layoutSubviews {
 	[super layoutSubviews];
 
 	CGRect const bounds = self.bounds;
 
 	CAShapeLayer * const activityIndicatorLayer = _activityIndicatorLayer;
-	activityIndicatorLayer.frame = bounds;
+	CGRect activityBounds;
+	CGRect scratch;
+	CGRectDivide(bounds, &activityBounds, &scratch, CGRectGetWidth(bounds), CGRectMinYEdge);
+	activityIndicatorLayer.frame = activityBounds;
+	
+	_titleLabel.frame = UIEdgeInsetsInsetRect(scratch, STHUDNewShinyHUDViewLabelInsets);
 }
+
+- (void)setTitle:(NSString *)title {
+	_titleLabel.text = title;
+	_titleLabel.alpha = title.length > 0 ? 1 : 0;
+}
+
+- (CGSize)intrinsicContentSize {
+	if (_titleLabel.text.length == 0) {
+		return STHUDNewShinyHUDViewNaturalSize;
+	}
+	CGFloat const width = STHUDNewShinyHUDViewNaturalSize.width - STHUDNewShinyHUDViewLabelInsets.left * 2;
+	NSDictionary * const attributes = @{NSFontAttributeName : _titleLabel.font};
+	CGSize size = [_titleLabel.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+	CGFloat const totalHeight = STHUDNewShinyHUDViewNaturalSize.height + size.height + STHUDNewShinyHUDViewLabelInsets.top + STHUDNewShinyHUDViewLabelInsets.bottom;
+	return CGSizeMake(STHUDNewShinyHUDViewNaturalSize.width, totalHeight);
+}
+
 - (void)didMoveToWindow {
 	UIWindow * const window = self.window;
 	CAShapeLayer * const activityIndicatorLayer = _activityIndicatorLayer;
@@ -97,11 +133,12 @@ static CGSize const STHUDNewShinyHUDViewNaturalSize = (CGSize){ .width = 80, .he
 	if (![super addHUD:hud]) {
 		return NO;
 	}
+	[hud addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:&_hudViewsByNonretainedHUD];
 
-	CGRect const bounds = self.bounds;
-	CGRect const hudViewRect = STRectAlign(bounds, (CGRect){ .size = STHUDNewShinyHUDViewNaturalSize }, STRectAlignXCenter|STRectAlignYCenter);
-	STHUDNewShinyHUDView * const hudView = [[STHUDNewShinyHUDView alloc] initWithFrame:hudViewRect];
-	hudView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
+	
+	STHUDNewShinyHUDView * const hudView = [[STHUDNewShinyHUDView alloc] initWithFrame:CGRectZero];
+	[hudView setTitle:hud.title];
+	[self updateHudFrameSize:hudView];
 
 	[_hudViewsByNonretainedHUD setObject:hudView forKey:[NSValue valueWithNonretainedObject:hud]];
 
@@ -114,12 +151,20 @@ static CGSize const STHUDNewShinyHUDViewNaturalSize = (CGSize){ .width = 80, .he
 	return YES;
 }
 
+- (void)updateHudFrameSize:(STHUDNewShinyHUDView *)hudView {
+	CGRect const bounds = self.bounds;
+	CGRect hudViewRect = STRectAlign(bounds, (CGRect){ .size = STHUDNewShinyHUDViewNaturalSize }, STRectAlignXCenter|STRectAlignYCenter);
+	hudViewRect.size = [hudView intrinsicContentSize];
+	hudView.frame = hudViewRect;
+}
+
 - (BOOL)removeHUD:(STHUD *)hud {
 	if (![super removeHUD:hud]) {
 		return NO;
 	}
 
 	id const hudViewKey = [NSValue valueWithNonretainedObject:hud];
+	[hud removeObserver:self forKeyPath:@"title" context:&_hudViewsByNonretainedHUD];
 
 	STHUDNewShinyHUDView * const hudView = [_hudViewsByNonretainedHUD objectForKey:hudViewKey];
 
@@ -132,6 +177,28 @@ static CGSize const STHUDNewShinyHUDViewNaturalSize = (CGSize){ .width = 80, .he
 	}];
 
 	return YES;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if (context == &_hudViewsByNonretainedHUD) {
+		STHUD * const hud = object;
+		id const hudViewKey = [NSValue valueWithNonretainedObject:hud];
+		STHUDNewShinyHUDView * const hudView = [_hudViewsByNonretainedHUD objectForKey:hudViewKey];
+		
+		if ([@"title" isEqualToString:keyPath]) {
+			id const titleObject = [change objectForKey:NSKeyValueChangeNewKey];
+			NSString *title = nil;
+			if ([titleObject isKindOfClass:[NSString class]]) {
+				title = (NSString *)titleObject;
+			}
+			[UIView animateWithDuration:kSTHUDNewShinyHostViewHUDViewChangeAnimationDuration animations:^{
+				[hudView setTitle:title];
+				[self updateHudFrameSize:hudView];
+			}];
+			return;
+		}
+	}
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 
