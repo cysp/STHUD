@@ -20,7 +20,8 @@ static const NSTimeInterval kSTHUDNewShinyHostViewHUDViewDismissalAnimationDurat
 
 
 static CGSize const STHUDNewShinyHUDViewNaturalSize = (CGSize){ .width = 80, .height = 80 };
-static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top = -2, .left = 4, .bottom = 8 , .right = 4};
+static CGSize const STHUDNewShinyHUDViewWithDisplayTextNaturalSize = (CGSize){ .width = 160, .height = 80 };
+static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top = -2, .left = 12, .bottom = 12 , .right = 12};
 
 @interface STHUDNewShinyHUDView : UIView
 @end
@@ -34,8 +35,12 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 	if ((self = [super initWithFrame:frame])) {
 		CGRect const bounds = self.bounds;
 
-		self.backgroundColor = [UIColor colorWithWhite:(CGFloat).975 alpha:(CGFloat).95];
-		self.layer.cornerRadius = 6;
+		UIVisualEffectView * const blurEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+		blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+		blurEffectView.frame = bounds;
+		blurEffectView.layer.cornerRadius = 6;
+		blurEffectView.layer.masksToBounds = YES;
+		[self addSubview:blurEffectView];
 
 		CAShapeLayer * const activityIndicatorLayer = _activityIndicatorLayer = [CAShapeLayer layer];
 		activityIndicatorLayer.frame = bounds;
@@ -54,11 +59,11 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 		
 		_titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		_titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-		_titleLabel.font = [UIFont systemFontOfSize:12];
+		_titleLabel.font = [UIFont systemFontOfSize:14];
 		_titleLabel.backgroundColor = [UIColor clearColor];
 		_titleLabel.textColor = [UIColor darkGrayColor];
-		_titleLabel.textAlignment = UITextAlignmentCenter;
-		_titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+		_titleLabel.textAlignment = NSTextAlignmentCenter;
+		_titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
 		_titleLabel.numberOfLines = 0;
 		[self addSubview:_titleLabel];
 
@@ -73,10 +78,11 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 	CGRect const bounds = self.bounds;
 
 	CAShapeLayer * const activityIndicatorLayer = _activityIndicatorLayer;
-	CGRect activityBounds;
+	CGRect activityScratch;
 	CGRect scratch;
-	CGRectDivide(bounds, &activityBounds, &scratch, CGRectGetWidth(bounds), CGRectMinYEdge);
-	activityIndicatorLayer.frame = activityBounds;
+	CGRectDivide(bounds, &activityScratch, &scratch, STHUDNewShinyHUDViewNaturalSize.height, CGRectMinYEdge);
+	CGRect const activityIndicatorRect = STRectAlign(activityScratch, (CGRect){ .size = STHUDNewShinyHUDViewNaturalSize }, STRectAlignXCenter|STRectAlignYCenter);
+	activityIndicatorLayer.frame = activityIndicatorRect;
 	
 	_titleLabel.frame = UIEdgeInsetsInsetRect(scratch, STHUDNewShinyHUDViewLabelInsets);
 }
@@ -90,11 +96,11 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 	if (_titleLabel.text.length == 0) {
 		return STHUDNewShinyHUDViewNaturalSize;
 	}
-	CGFloat const width = STHUDNewShinyHUDViewNaturalSize.width - STHUDNewShinyHUDViewLabelInsets.left * 2;
+	CGFloat const width = STHUDNewShinyHUDViewWithDisplayTextNaturalSize.width - STHUDNewShinyHUDViewLabelInsets.left * 2;
 	NSDictionary * const attributes = @{NSFontAttributeName : _titleLabel.font};
 	CGSize size = [_titleLabel.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
-	CGFloat const totalHeight = STHUDNewShinyHUDViewNaturalSize.height + size.height + STHUDNewShinyHUDViewLabelInsets.top + STHUDNewShinyHUDViewLabelInsets.bottom;
-	return CGSizeMake(STHUDNewShinyHUDViewNaturalSize.width, totalHeight);
+	CGFloat const totalHeight = STHUDNewShinyHUDViewWithDisplayTextNaturalSize.height + size.height + STHUDNewShinyHUDViewLabelInsets.top + STHUDNewShinyHUDViewLabelInsets.bottom;
+	return CGSizeMake(STHUDNewShinyHUDViewWithDisplayTextNaturalSize.width, totalHeight);
 }
 
 - (void)didMoveToWindow {
@@ -153,9 +159,11 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 
 - (void)updateHudFrameSize:(STHUDNewShinyHUDView *)hudView {
 	CGRect const bounds = self.bounds;
-	CGRect hudViewRect = STRectAlign(bounds, (CGRect){ .size = STHUDNewShinyHUDViewNaturalSize }, STRectAlignXCenter|STRectAlignYCenter);
-	hudViewRect.size = [hudView intrinsicContentSize];
-	hudView.frame = hudViewRect;
+	CGSize const hudViewSize = [hudView intrinsicContentSize];
+	CGRect hudViewRect = STRectAlign(bounds, (CGRect){ .size = hudViewSize }, STRectAlignXCenter|STRectAlignYCenter);
+	[UIView performWithoutAnimation:^{
+		hudView.frame = hudViewRect;
+	}];
 }
 
 - (BOOL)removeHUD:(STHUD *)hud {
