@@ -110,7 +110,7 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 		[activityIndicatorLayer removeAnimationForKey:@"animation"];
 		return;
 	}
-	CGFloat const hairlineWidth = (CGFloat)(1. / (window.screen.scale ?: 1));
+	CGFloat const hairlineWidth = (CGFloat)(1. / ((window.screen.scale > 0) ? window.screen.scale : 1));
 	activityIndicatorLayer.lineWidth = 3 * hairlineWidth;
 
 	CABasicAnimation * const animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
