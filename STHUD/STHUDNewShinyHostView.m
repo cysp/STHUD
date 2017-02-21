@@ -35,12 +35,19 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 	if ((self = [super initWithFrame:frame])) {
 		CGRect const bounds = self.bounds;
 
-		UIVisualEffectView * const blurEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
-		blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-		blurEffectView.frame = bounds;
-		blurEffectView.layer.cornerRadius = 6;
-		blurEffectView.layer.masksToBounds = YES;
-		[self addSubview:blurEffectView];
+		UIView * const backgroundView = [[UIView alloc] initWithFrame:bounds];
+		backgroundView.backgroundColor = [UIColor colorWithWhite:(CGFloat).975 alpha:(CGFloat).975];
+		backgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+		backgroundView.layer.cornerRadius = 6;
+		backgroundView.layer.shadowOpacity = (float)(1./3.);
+		backgroundView.layer.shadowOffset = CGSizeZero;
+		backgroundView.layer.shadowRadius = 6;
+		{
+			CGColorRef const strokeColor = [UIColor colorWithWhite:(CGFloat).2 alpha:1].CGColor;
+			backgroundView.layer.shadowColor = strokeColor;
+			(void)strokeColor;
+		}
+		[self addSubview:backgroundView];
 
 		CAShapeLayer * const activityIndicatorLayer = _activityIndicatorLayer = [CAShapeLayer layer];
 		activityIndicatorLayer.frame = bounds;
@@ -120,6 +127,16 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 	animation.fillMode = kCAFillModeBoth;
 	[activityIndicatorLayer addAnimation:animation forKey:@"animation"];
 }
+
+- (void)tintColorDidChange {
+	[super tintColorDidChange];
+
+	UIColor * const tintColor = self.tintColor;
+	if (tintColor) {
+		_activityIndicatorLayer.strokeColor = tintColor.CGColor;
+	}
+}
+
 @end
 
 
