@@ -41,8 +41,12 @@
 
 
 - (STHUD *)hudWithTitle:(NSString *)title {
+	return [self hudWithTitle:title subtitle:nil];
+}
+- (STHUD *)hudWithTitle:(NSString *)title subtitle:(NSString *)subtitle {
 	STHUD * const hud = [[STHUD alloc] initWithHost:self];
 	hud.title = title;
+	hud.subtitle = subtitle;
 	return hud;
 }
 

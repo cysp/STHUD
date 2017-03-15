@@ -19,6 +19,7 @@ static id<STHUDHostImplementation> gSTHUDDefaultHost = nil;
 @private
 	id<STHUDHostImplementation> _host;
 	NSString *_title;
+	NSString *_subtitle;
 	BOOL _modal;
 	NSCountedSet *_selfRetains;
 }
@@ -31,14 +32,18 @@ static id<STHUDHostImplementation> gSTHUDDefaultHost = nil;
 	return [self initWithHost:gSTHUDDefaultHost title:nil];
 }
 - (id)initWithHost:(id<STHUDHostImplementation>)host {
-	return [self initWithHost:host title:nil];
+	return [self initWithHost:host title:nil subtitle:nil];
 }
 - (id)initWithHost:(id<STHUDHostImplementation>)host title:(NSString *)title {
+	return [self initWithHost:host title:title subtitle:nil];
+}
+- (id)initWithHost:(id<STHUDHostImplementation>)host title:(NSString *)title subtitle:(NSString *)subtitle {
 	NSAssert([NSThread isMainThread], @"not on main thread", nil);
 	NSParameterAssert(host);
 	if ((self = [super init])) {
 		_host = host;
 		_title = title.copy;
+		_subtitle = subtitle.copy;
 		_state = STHUDStateIndeterminate;
 		_selfRetains = [[NSCountedSet alloc] init];
 		[_host addHUD:self];
@@ -74,6 +79,18 @@ static id<STHUDHostImplementation> gSTHUDDefaultHost = nil;
 		[self willChangeValueForKey:@"title"];
 		_title = [title copy];
 		[self didChangeValueForKey:@"title"];
+	}
+}
+
++ (BOOL)automaticallyNotifiesObserversOfSubtitle { return NO; }
+@synthesize subtitle = _subtitle;
+- (void)setSubtitle:(NSString *)subtitle {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+
+	if (![_subtitle isEqualToString:subtitle]) {
+		[self willChangeValueForKey:@"subtitle"];
+		_subtitle = [subtitle copy];
+		[self didChangeValueForKey:@"subtitle"];
 	}
 }
 

@@ -22,6 +22,7 @@ NS_ENUM(NSUInteger, STHUDState) {
 
 @protocol STHUDHost <NSObject>
 - (STHUD *)hudWithTitle:(NSString *)title;
+- (STHUD *)hudWithTitle:(NSString *)title subtitle:(NSString *)subtitle;
 @end
 @protocol STHUDHostImplementation <NSObject>
 - (BOOL)addHUD:(STHUD *)hud;
@@ -34,10 +35,12 @@ NS_ENUM(NSUInteger, STHUDState) {
 + (void)setDefaultHost:(id<STHUDHostImplementation>)host;
 
 - (id)initWithHost:(id<STHUDHostImplementation>)host;
-- (id)initWithHost:(id<STHUDHostImplementation>)host title:(NSString *)title __attribute__((objc_designated_initializer));
+- (id)initWithHost:(id<STHUDHostImplementation>)host title:(NSString *)title;
+- (id)initWithHost:(id<STHUDHostImplementation>)host title:(NSString *)title subtitle:(NSString *)subtitle __attribute__((objc_designated_initializer));
 
 @property (nonatomic,assign) enum STHUDState state;
 @property (nonatomic,copy) NSString *title;
+@property (nonatomic,copy) NSString *subtitle;
 @property (nonatomic,assign,getter=isModal) BOOL modal;
 
 - (void)keepActiveForDuration:(NSTimeInterval)duration;
