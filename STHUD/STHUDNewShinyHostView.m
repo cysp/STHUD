@@ -21,7 +21,8 @@ static const NSTimeInterval kSTHUDNewShinyHostViewHUDViewDismissalAnimationDurat
 
 static CGSize const STHUDNewShinyHUDViewNaturalSize = (CGSize){ .width = 80, .height = 80 };
 static CGSize const STHUDNewShinyHUDViewWithDisplayTextNaturalSize = (CGSize){ .width = 160, .height = 80 };
-static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top = -2, .left = 12, .bottom = 12 , .right = 12};
+static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top = -2, .left = 8, .bottom = 12 , .right = 8};
+static CGFloat const STHUDNewShinyHUDViewLabelVerticalPadding = 4;
 
 @interface STHUDNewShinyHUDView : UIView
 @end
@@ -30,6 +31,7 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 @private
 	CAShapeLayer *_activityIndicatorLayer;
 	UILabel *_titleLabel;
+	UILabel *_subtitleLabel;
 }
 - (instancetype)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
@@ -63,16 +65,33 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 		CGPathAddArc(path, NULL, 40, 40, 20, (CGFloat)(M_PI_4), (CGFloat)(2 * M_PI), false);
 		activityIndicatorLayer.path = path;
 		CGPathRelease(path), path = NULL;
-		
+
 		_titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		_titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-		_titleLabel.font = [UIFont systemFontOfSize:14];
+		UIFont *titleLabelFont;
+		if ([UIFont.class respondsToSelector:@selector(systemFontOfSize:weight:)]) {
+			titleLabelFont = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
+		}
+		if (!titleLabelFont) {
+			titleLabelFont = [UIFont systemFontOfSize:14];
+		}
+		_titleLabel.font = titleLabelFont;
 		_titleLabel.backgroundColor = [UIColor clearColor];
 		_titleLabel.textColor = [UIColor darkGrayColor];
 		_titleLabel.textAlignment = NSTextAlignmentCenter;
 		_titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
 		_titleLabel.numberOfLines = 0;
 		[self addSubview:_titleLabel];
+
+		_subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+		_subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+		_subtitleLabel.font = [UIFont systemFontOfSize:14];
+		_subtitleLabel.backgroundColor = [UIColor clearColor];
+		_subtitleLabel.textColor = [UIColor darkGrayColor];
+		_subtitleLabel.textAlignment = NSTextAlignmentCenter;
+		_subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+		_subtitleLabel.numberOfLines = 0;
+		[self addSubview:_subtitleLabel];
 
 		[self.layer addSublayer:activityIndicatorLayer];
 	}
@@ -90,8 +109,19 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 	CGRectDivide(bounds, &activityScratch, &scratch, STHUDNewShinyHUDViewNaturalSize.height, CGRectMinYEdge);
 	CGRect const activityIndicatorRect = STRectAlign(activityScratch, (CGRect){ .size = STHUDNewShinyHUDViewNaturalSize }, STRectAlignXCenter|STRectAlignYCenter);
 	activityIndicatorLayer.frame = activityIndicatorRect;
-	
-	_titleLabel.frame = UIEdgeInsetsInsetRect(scratch, STHUDNewShinyHUDViewLabelInsets);
+
+	CGFloat const width = STHUDNewShinyHUDViewWithDisplayTextNaturalSize.width - STHUDNewShinyHUDViewLabelInsets.left * 2;
+	CGSize const titleLabelSize = STSizeCeil([_titleLabel.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{
+		NSFontAttributeName: _titleLabel.font,
+	} context:nil].size);
+	CGSize const subtitleLabelSize = STSizeCeil([_subtitleLabel.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{
+		NSFontAttributeName: _subtitleLabel.font,
+	} context:nil].size);
+
+	scratch = UIEdgeInsetsInsetRect(scratch, STHUDNewShinyHUDViewLabelInsets);
+
+	_titleLabel.frame = STRectAlign(scratch, (CGRect){ .size = titleLabelSize }, STRectAlignXCenter|STRectAlignYTop);
+	_subtitleLabel.frame = STRectAlign(scratch, (CGRect){ .size = subtitleLabelSize }, STRectAlignXCenter|STRectAlignYBottom);
 }
 
 - (void)setTitle:(NSString *)title {
@@ -99,14 +129,31 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 	_titleLabel.alpha = title.length > 0 ? 1 : 0;
 }
 
+- (void)setSubtitle:(NSString *)subtitle {
+	_subtitleLabel.text = subtitle;
+	_subtitleLabel.alpha = subtitle.length > 0 ? 1 : 0;
+}
+
 - (CGSize)intrinsicContentSize {
-	if (_titleLabel.text.length == 0) {
+	CGFloat const width = STHUDNewShinyHUDViewWithDisplayTextNaturalSize.width - STHUDNewShinyHUDViewLabelInsets.left * 2;
+	CGSize const titleLabelSize = STSizeCeil([_titleLabel.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{
+		NSFontAttributeName: _titleLabel.font,
+	} context:nil].size);
+	CGSize const subtitleLabelSize = STSizeCeil([_subtitleLabel.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{
+		NSFontAttributeName: _subtitleLabel.font,
+	} context:nil].size);
+	if (titleLabelSize.height == 0 && subtitleLabelSize.height == 0) {
 		return STHUDNewShinyHUDViewNaturalSize;
 	}
-	CGFloat const width = STHUDNewShinyHUDViewWithDisplayTextNaturalSize.width - STHUDNewShinyHUDViewLabelInsets.left * 2;
-	NSDictionary * const attributes = @{NSFontAttributeName : _titleLabel.font};
-	CGSize size = [_titleLabel.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
-	CGFloat const totalHeight = STHUDNewShinyHUDViewWithDisplayTextNaturalSize.height + size.height + STHUDNewShinyHUDViewLabelInsets.top + STHUDNewShinyHUDViewLabelInsets.bottom;
+
+	CGFloat labelsHeight = 0;
+	labelsHeight += titleLabelSize.height;
+	if (titleLabelSize.height > 0 && subtitleLabelSize.height > 0) {
+		labelsHeight += STHUDNewShinyHUDViewLabelVerticalPadding;
+	}
+	labelsHeight += subtitleLabelSize.height;
+
+	CGFloat const totalHeight = STHUDNewShinyHUDViewWithDisplayTextNaturalSize.height + labelsHeight + STHUDNewShinyHUDViewLabelInsets.top + STHUDNewShinyHUDViewLabelInsets.bottom;
 	return CGSizeMake(STHUDNewShinyHUDViewWithDisplayTextNaturalSize.width, totalHeight);
 }
 
@@ -157,10 +204,11 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 		return NO;
 	}
 	[hud addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:&_hudViewsByNonretainedHUD];
+	[hud addObserver:self forKeyPath:@"subtitle" options:NSKeyValueObservingOptionNew context:&_hudViewsByNonretainedHUD];
 
-	
 	STHUDNewShinyHUDView * const hudView = [[STHUDNewShinyHUDView alloc] initWithFrame:CGRectZero];
 	[hudView setTitle:hud.title];
+	[hudView setSubtitle:hud.subtitle];
 	[self updateHudFrameSize:hudView];
 
 	[_hudViewsByNonretainedHUD setObject:hudView forKey:[NSValue valueWithNonretainedObject:hud]];
@@ -190,6 +238,7 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 
 	id const hudViewKey = [NSValue valueWithNonretainedObject:hud];
 	[hud removeObserver:self forKeyPath:@"title" context:&_hudViewsByNonretainedHUD];
+	[hud removeObserver:self forKeyPath:@"subtitle" context:&_hudViewsByNonretainedHUD];
 
 	STHUDNewShinyHUDView * const hudView = [_hudViewsByNonretainedHUD objectForKey:hudViewKey];
 
@@ -209,7 +258,7 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 		STHUD * const hud = object;
 		id const hudViewKey = [NSValue valueWithNonretainedObject:hud];
 		STHUDNewShinyHUDView * const hudView = [_hudViewsByNonretainedHUD objectForKey:hudViewKey];
-		
+
 		if ([@"title" isEqualToString:keyPath]) {
 			id const titleObject = [change objectForKey:NSKeyValueChangeNewKey];
 			NSString *title = nil;
@@ -218,6 +267,19 @@ static UIEdgeInsets const STHUDNewShinyHUDViewLabelInsets = (UIEdgeInsets){.top 
 			}
 			[UIView animateWithDuration:kSTHUDNewShinyHostViewHUDViewChangeAnimationDuration animations:^{
 				[hudView setTitle:title];
+				[self updateHudFrameSize:hudView];
+			}];
+			return;
+		}
+
+		if ([@"subtitle" isEqualToString:keyPath]) {
+			id const subtitleObject = [change objectForKey:NSKeyValueChangeNewKey];
+			NSString *subtitle = nil;
+			if ([subtitleObject isKindOfClass:[NSString class]]) {
+				subtitle = (NSString *)subtitleObject;
+			}
+			[UIView animateWithDuration:kSTHUDNewShinyHostViewHUDViewChangeAnimationDuration animations:^{
+				[hudView setSubtitle:subtitle];
 				[self updateHudFrameSize:hudView];
 			}];
 			return;

@@ -15,6 +15,8 @@
 
 extern CGPoint STPointIntegral(CGPoint point);
 
+extern CGSize STSizeCeil(CGSize size);
+
 
 typedef NS_OPTIONS(NSUInteger, STRectAlignOptions) {
     STRectAlignXLeft   = 0x01,

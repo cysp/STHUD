@@ -21,6 +21,23 @@ static inline double STFloatFloor(double f) {
 	return floor(f);
 }
 
+__attribute__((overloadable,unused))
+static inline float STFloatCeil(float f) {
+	return ceilf(f);
+}
+__attribute__((overloadable,unused))
+static inline double STFloatCeil(double f) {
+	return ceil(f);
+}
+
+
+CGSize STSizeCeil(CGSize size) {
+	return (CGSize){
+		.width = STFloatCeil(size.width),
+		.height = STFloatCeil(size.height),
+	};
+}
+
 CGPoint STPointIntegral(CGPoint point) {
 	point.x = STFloatFloor(point.x);
 	point.y = STFloatFloor(point.y);
