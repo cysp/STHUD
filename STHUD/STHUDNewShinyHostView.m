@@ -34,68 +34,69 @@ static CGFloat const STHUDNewShinyHUDViewLabelVerticalPadding = 4;
 	UILabel *_subtitleLabel;
 }
 - (instancetype)initWithFrame:(CGRect)frame {
-	if ((self = [super initWithFrame:frame])) {
-		CGRect const bounds = self.bounds;
+    if ((self = [super initWithFrame:frame])) {
+        CGRect const bounds = self.bounds;
 
-		UIView * const backgroundView = [[UIView alloc] initWithFrame:bounds];
-		backgroundView.backgroundColor = [UIColor colorWithWhite:(CGFloat).975 alpha:(CGFloat).975];
-		backgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-		backgroundView.layer.cornerRadius = 6;
-		backgroundView.layer.shadowOpacity = (float)(1./3.);
-		backgroundView.layer.shadowOffset = CGSizeZero;
-		backgroundView.layer.shadowRadius = 6;
-		{
-			CGColorRef const strokeColor = [UIColor colorWithWhite:(CGFloat).2 alpha:1].CGColor;
-			backgroundView.layer.shadowColor = strokeColor;
-			(void)strokeColor;
-		}
-		[self addSubview:backgroundView];
+        UIView * const backgroundView = [[UIView alloc] initWithFrame:bounds];
+        backgroundView.backgroundColor = [UIColor colorWithWhite:(CGFloat).975 alpha:(CGFloat).975];
+        backgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        backgroundView.layer.cornerRadius = 6;
+        backgroundView.layer.shadowOpacity = (float)(1./3.);
+        backgroundView.layer.shadowOffset = CGSizeZero;
+        backgroundView.layer.shadowRadius = 6;
+        {
+            CGColorRef const strokeColor = [UIColor colorWithWhite:(CGFloat).2 alpha:1].CGColor;
+            backgroundView.layer.shadowColor = strokeColor;
+            (void)strokeColor;
+        }
+        [self addSubview:backgroundView];
 
-		CAShapeLayer * const activityIndicatorLayer = _activityIndicatorLayer = [CAShapeLayer layer];
-		activityIndicatorLayer.frame = bounds;
-		{
-			CGColorRef const strokeColor = [UIColor colorWithWhite:(CGFloat).6 alpha:1].CGColor;
-			activityIndicatorLayer.strokeColor = strokeColor;
-			(void)strokeColor;
-		}
-		activityIndicatorLayer.fillColor = NULL;
-		activityIndicatorLayer.lineCap = kCALineCapRound;
+        CAShapeLayer * const activityIndicatorLayer = _activityIndicatorLayer = [CAShapeLayer layer];
+        activityIndicatorLayer.frame = bounds;
+        {
+            CGColorRef const strokeColor = [UIColor colorWithWhite:(CGFloat).6 alpha:1].CGColor;
+            activityIndicatorLayer.strokeColor = strokeColor;
+            (void)strokeColor;
+        }
+        activityIndicatorLayer.fillColor = NULL;
+        activityIndicatorLayer.lineCap = kCALineCapRound;
 
-		CGMutablePathRef path = CGPathCreateMutable();
-		CGPathAddArc(path, NULL, 40, 40, 20, (CGFloat)(M_PI_4), (CGFloat)(2 * M_PI), false);
-		activityIndicatorLayer.path = path;
-		CGPathRelease(path), path = NULL;
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathAddArc(path, NULL, 40, 40, 20, (CGFloat)(M_PI_4), (CGFloat)(2 * M_PI), false);
+        activityIndicatorLayer.path = path;
+        CGPathRelease(path);
+        path = NULL;
 
-		_titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		_titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-		UIFont *titleLabelFont;
-		if ([UIFont.class respondsToSelector:@selector(systemFontOfSize:weight:)]) {
-			titleLabelFont = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
-		}
-		if (!titleLabelFont) {
-			titleLabelFont = [UIFont systemFontOfSize:14];
-		}
-		_titleLabel.font = titleLabelFont;
-		_titleLabel.backgroundColor = [UIColor clearColor];
-		_titleLabel.textColor = [UIColor darkGrayColor];
-		_titleLabel.textAlignment = NSTextAlignmentCenter;
-		_titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-		_titleLabel.numberOfLines = 0;
-		[self addSubview:_titleLabel];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        UIFont *titleLabelFont;
+        if ([UIFont.class respondsToSelector:@selector(systemFontOfSize:weight:)]) {
+            titleLabelFont = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
+        }
+        if (!titleLabelFont) {
+            titleLabelFont = [UIFont systemFontOfSize:14];
+        }
+        _titleLabel.font = titleLabelFont;
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.textColor = [UIColor darkGrayColor];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _titleLabel.numberOfLines = 0;
+        [self addSubview:_titleLabel];
 
-		_subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		_subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-		_subtitleLabel.font = [UIFont systemFontOfSize:14];
-		_subtitleLabel.backgroundColor = [UIColor clearColor];
-		_subtitleLabel.textColor = [UIColor darkGrayColor];
-		_subtitleLabel.textAlignment = NSTextAlignmentCenter;
-		_subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-		_subtitleLabel.numberOfLines = 0;
-		[self addSubview:_subtitleLabel];
+        _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        _subtitleLabel.font = [UIFont systemFontOfSize:14];
+        _subtitleLabel.backgroundColor = [UIColor clearColor];
+        _subtitleLabel.textColor = [UIColor darkGrayColor];
+        _subtitleLabel.textAlignment = NSTextAlignmentCenter;
+        _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _subtitleLabel.numberOfLines = 0;
+        [self addSubview:_subtitleLabel];
 
-		[self.layer addSublayer:activityIndicatorLayer];
-	}
-	return self;
+        [self.layer addSublayer:activityIndicatorLayer];
+    }
+    return self;
 }
 
 - (void)layoutSubviews {
